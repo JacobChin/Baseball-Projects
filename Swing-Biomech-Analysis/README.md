@@ -86,8 +86,8 @@ The swing was segmented into:
     <td align="center"><b>Righty (FP100 – Side View)</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%20FP100%20Side%20View.png" width="350"/></td>
-    <td><img src="Figures/Righty%20FP100%20Side%20View.png" width="350"/></td>
+    <td><img src="Figures/Lefty%20FP100%20Side%20View_Zoom.png" width="350"/></td>
+    <td><img src="Figures/Righty%20FP100%20Side%20View_Zoom.png" width="350"/></td>
   </tr>
 </table>
 
@@ -97,8 +97,8 @@ The swing was segmented into:
     <td align="center"><b>Righty (FP100 – Back View)</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%20FP100%20Back%20View.png" width="350"/></td>
-    <td><img src="Figures/Righty%20FP100%20Back%20View.png" width="350"/></td>
+    <td><img src="Figures/Lefty%20FP100%20Back%20View_Zoom.png" width="350"/></td>
+    <td><img src="Figures/Righty%20FP100%20Back%20View_Zoom.png" width="350"/></td>
   </tr>
 </table>
 
