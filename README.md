@@ -14,7 +14,7 @@ for certain pitches to see which pitchers tunneled the best (keep in mind this d
 of the ball at the decision point).
 
 ## Swing Biomechanics Project:
-This analysis was taken from Drivelines OBP Data, which compares two players' swings that are the same height, weight and age.
+This analysis was taken from Driveline Baseball's OBP Data, which compares two players' swings that are the same height, weight and age.
 Both were hit with the same launch angle off of a machine, but have significantly different bat speed/exit velocities. The righty
 produces significantly more bat speed, and this notebook dives into some of the possibilities behind this, mainly focusing on the
 pelvis and torso velocities, angles, and acceleration along with force production using force plate data. 3D models were created of
