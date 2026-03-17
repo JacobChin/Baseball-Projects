@@ -4,7 +4,13 @@
 
 This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset.
 
-The goal is to understand how ground reaction forces from the lead-leg block translate into rotational acceleration and energy transfer through the kinetic chain.
+This takes two swings from different players, one from a lefty and one from a righty. These players are both the same height, weight, age, and playing level.
+
+All swings were off of the same machine set at ~65 mph from ~40 ft away from home plate, and both of these swings had the same launch angle and were to the pull side.
+
+The lefty had a max bat speed of 68.25 and a bat speed of 67.29 at contact, while the righty had a max bat speed of 76.32 and a bat speed of 74.51 at contact.
+
+The goal is to understand some of the reasons why the righty is able to produce such a significant amount of bat speed compared to the lefty.
 
 The analysis combines force plate data, joint kinematics, angular velocities, and hip-shoulder separation to evaluate swing efficiency and sequencing.
 
