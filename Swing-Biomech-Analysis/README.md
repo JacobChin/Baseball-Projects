@@ -63,8 +63,6 @@ The swing was segmented into:
 
 ---
 
-## Project Structure
-
 ## Lefty vs Righty Comparison
 
 <table>
