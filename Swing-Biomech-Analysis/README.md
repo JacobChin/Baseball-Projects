@@ -66,6 +66,17 @@ The swing was segmented into:
 ## Lefty vs Righty Comparison
 
 <table>
+<tr>
+<td align="center"><b>Lefty</b></td>
+<td align="center"><b>Righty</b></td>
+</tr>
+<tr>
+<td><img src="Figures/lefty_side_view.gif" width="300"></td>
+<td><img src="Figures/righty_side_view.gif" width="300"></td>
+</tr>
+</table>
+
+<table>
   <tr>
     <td align="center"><b>Lefty (FP100 – Side View)</b></td>
     <td align="center"><b>Righty (FP100 – Side View)</b></td>
