@@ -63,25 +63,6 @@ The swing was segmented into:
 
 ---
 
-## Key Findings
-
-- Righty produced **higher peak force with shorter time to peak**
-- Both swings had **similar impulse**, but different outcomes
-- Righty showed **greater rotational efficiency**
-- Lefty had **more hip-shoulder separation**, but less effective timing
-- Sequencing was cleaner in the righty (**better energy transfer**)
-
----
-
-## Player Development Insights
-
-- Improve **rate of force development** (not just total force)
-- Delay rotation until after **FP100**
-- Focus on **pelvis → torso → arm sequencing**
-- Prioritize **timing over raw separation**
-
----
-
 ## Project Structure
 
 ## Lefty vs Righty Comparison
