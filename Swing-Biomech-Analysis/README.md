@@ -77,3 +77,16 @@ The swing was segmented into:
 ---
 
 ## Project Structure
+
+## Lefty vs Righty Comparison
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%20HSS.png" width="400"/></td>
+    <td><img src="Figures/Righty%20HSS.png" width="400"/></td>
+  </tr>
+</table>
