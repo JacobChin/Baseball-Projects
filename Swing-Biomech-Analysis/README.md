@@ -71,10 +71,12 @@ The swing was segmented into:
 <td align="center"><b>Righty</b></td>
 </tr>
 <tr>
-<td><img src="Figures/lefty_side_view.gif" width="300"></td>
-<td><img src="Figures/righty_side_view.gif" width="300"></td>
+<td><img src="Figures/ezgif.com-crop-video%20L.gif" width="350"></td>
+<td><img src="Figures/ezgif.com-crop-video.gif" width="350"></td>
 </tr>
 </table>
+
+*Both swings are visualized from a consistent side-view perspective for direct comparison of sequencing and rotation.*
 
 <table>
   <tr>
