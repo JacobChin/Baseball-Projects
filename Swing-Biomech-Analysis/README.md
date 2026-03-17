@@ -82,23 +82,23 @@ The swing was segmented into:
 
 <table>
   <tr>
-    <td align="center"><b>Lefty</b></td>
-    <td align="center"><b>Righty</b></td>
+    <td align="center"><b>Lefty (FP100 – Side View)</b></td>
+    <td align="center"><b>Righty (FP100 – Side View)</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%20HSS.png" width="400"/></td>
-    <td><img src="Figures/Righty%20HSS.png" width="400"/></td>
+    <td><img src="Figures/Lefty%20FP100%20Side%20View.png" width="350"/></td>
+    <td><img src="Figures/Righty%20FP100%20Side%20View.png" width="350"/></td>
   </tr>
 </table>
 
 <table>
   <tr>
-    <td align="center"><b>Lefty</b></td>
-    <td align="center"><b>Righty</b></td>
+    <td align="center"><b>Lefty (FP100 – Back View)</b></td>
+    <td align="center"><b>Righty (FP100 – Back View)</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%20Efficiency.png" width="400"/></td>
-    <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
+    <td><img src="Figures/Lefty%20FP100%20Back%20View.png" width="350"/></td>
+    <td><img src="Figures/Righty%20FP100%20Back%20View.png" width="350"/></td>
   </tr>
 </table>
 
@@ -121,5 +121,49 @@ The swing was segmented into:
   <tr>
     <td><img src="Figures/Lefty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="400"/></td>
     <td><img src="Figures/Righty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%20Peak%20Force%20Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Peak%20Force%20Graph.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%20HSS.png" width="400"/></td>
+    <td><img src="Figures/Righty%20HSS.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%20Efficiency.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
   </tr>
 </table>
