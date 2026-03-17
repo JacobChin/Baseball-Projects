@@ -26,10 +26,10 @@ These were converted into frame indices for alignment across all signals.
 
 The swing was segmented into:
 
-- **FP10-20 → FP10** *(early loading)*
-- **FP10 → FP100** *(force development)*
-- **FP100 → FP100+20** *(early rotation)*
-- **FP100+20 → Contact** *(energy transfer phase)*
+- **FP10-20 → FP10** *(20 frames before fp10 to fp10)*
+- **FP10 → FP100** 
+- **FP100 → FP100+20** *(fp 100 to 20 frames after fp100)*
+- **FP100+20 → Contact** 
 
 ---
 
