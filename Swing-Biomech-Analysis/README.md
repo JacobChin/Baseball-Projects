@@ -71,8 +71,8 @@ The swing was segmented into:
 <td align="center"><b>Righty</b></td>
 </tr>
 <tr>
-<td><img src="Figures/LeftySwing.mp4" width="350"></td>
-<td><img src="Figures/RightySwing.mp4" width="350"></td>
+<td><img src="Figures/LeftySwing.gif" width="350"></td>
+<td><img src="Figures/RightySwing.gif" width="350"></td>
 </tr>
 </table>
 
