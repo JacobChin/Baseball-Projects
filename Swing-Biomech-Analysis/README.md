@@ -71,8 +71,8 @@ The swing was segmented into:
 <td align="center"><b>Righty</b></td>
 </tr>
 <tr>
-<td><img src="Figures/ezgif.com-crop-video%20L.gif" width="350"></td>
-<td><img src="Figures/ezgif.com-crop-video.gif" width="350"></td>
+<td><img src="Figures/ezgif.com-crop-video%20L.mp4" width="350"></td>
+<td><img src="Figures/ezgif.com-crop-video.mp4" width="350"></td>
 </tr>
 </table>
 
