@@ -76,7 +76,6 @@ The swing was segmented into:
 </tr>
 </table>
 
-
 *Both swings are visualized from a consistent side-view perspective for direct comparison of sequencing and rotation.*
 
 <table>
