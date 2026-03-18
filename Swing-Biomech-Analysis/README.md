@@ -65,16 +65,7 @@ The swing was segmented into:
 
 ## Lefty vs Righty Comparison
 
-<table>
-<tr>
-<td align="center"><b>Lefty</b></td>
-<td align="center"><b>Righty</b></td>
-</tr>
-<tr>
-<td><img src="Figures/LeftySwing.gif" width="350"></td>
-<td><img src="Figures/RightySwing.gif" width="350"></td>
-</tr>
-</table>
+![Image](https://github.com/user-attachments/assets/a18a611a-cbbc-433a-bab0-40713f9d716e)
 
 
 *Both swings are visualized from a consistent side-view perspective for direct comparison of sequencing and rotation.*
