@@ -143,3 +143,38 @@ The swing was segmented into:
     <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
   </tr>
 </table>
+
+## Key Takeaways
+
+- **Peak force ≠ acceleration**
+  - The righty generates higher peak lead leg force, but overall impulse is similar between swings.
+  - This shows that how force is applied over time (not just peak magnitude) is critical for generating rotational acceleration.
+
+- **Force timing drives rotational acceleration**
+  - The righty produces a sharper, more time-concentrated force application, leading to higher pelvis acceleration.
+  - The lefty applies force over a longer window, resulting in similar impulse but lower peak acceleration.
+
+- **Early-phase differences matter**
+  - From FP10-20 → FP10, the lefty actually shows higher early pelvis acceleration and rotation.
+  - However, this does not translate into later explosive acceleration into FP100 and beyond.
+
+- **Energy transfer inefficiency in the lefty**
+  - Despite similar impulse, the lefty converts force into rotational velocity less efficiently.
+  - This suggests potential losses in:
+    - segment sequencing  
+    - lead leg blocking  
+    - or rotational stiffness
+
+- **Sequencing and acceleration windows are key separators**
+  - The righty shows a more pronounced acceleration window between FP100 → contact.
+  - This aligns with more effective proximal-to-distal energy transfer.
+
+- **Multi-planar contributions remain consistent**
+  - Most rotational velocity is driven by the axial (z) plane, with smaller contributions from x and y.
+  - Differences between hitters are driven more by magnitude and timing than by directional strategy.
+
+- **Practical implication**
+  - Improving the lefty’s performance likely requires:
+    - increasing peak force rate (RFD)  
+    - improving lead leg block stiffness  
+    - tightening timing of force application relative to rotation  
