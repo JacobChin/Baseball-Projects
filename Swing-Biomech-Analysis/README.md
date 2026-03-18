@@ -128,8 +128,8 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%20HSS.png" width="400"/></td>
-    <td><img src="Figures/Righty%20HSS.png" width="400"/></td>
+    <td><img src="Figures/Lefty%20Metrics%20at%20FP100.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Metrics%20at%20FP100" width="400"/></td>
   </tr>
 </table>
 
