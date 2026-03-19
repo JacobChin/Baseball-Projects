@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset.
+This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset, mainly focusing on the pelvis and torso.
 
 This takes two swings from different players, one from a lefty and one from a righty. These players are both the same height, weight, age, and playing level.
 
@@ -130,6 +130,39 @@ The swing was segmented into:
   <tr>
     <td><img src="Figures/Lefty%20Metrics%20at%20FP100.png" width="400"/></td>
     <td><img src="Figures/Righty%20Metrics%20at%20FP100.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_All_Pelvis_Velos_Acc.png" width="400"/></td>
+    <td><img src="Figures/Righty_All_Pelvis_Velos_Acc.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Peak_Velos.png" width="400"/></td>
+    <td><img src="Figures/Righty_Peak_Velos.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Frame_Diff.png" width="400"/></td>
+    <td><img src="Figures/Righty_Frame_Diff.png" width="400"/></td>
   </tr>
 </table>
 
