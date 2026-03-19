@@ -161,6 +161,28 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
+    <td><img src="Figures/Lefty_Elbow_Velos.png" width="400"/></td>
+    <td><img src="Figures/Righty_Elbow_Velos.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Hand_Velos.png" width="400"/></td>
+    <td><img src="Figures/Righty_Hand_Velos.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
     <td><img src="Figures/Lefty_Peak_Velos.png" width="400"/></td>
     <td><img src="Figures/Righty_Peak_Velos.png" width="400"/></td>
   </tr>
