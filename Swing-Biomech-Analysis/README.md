@@ -106,8 +106,8 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="700"/></td>
-    <td><img src="Figures/Righty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="700"/></td>
+    <td><img src="Figures/Lefty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Zoomed%203D%20angular%20Velos%20Graph.png" width="400"/></td>
   </tr>
 </table>
 
