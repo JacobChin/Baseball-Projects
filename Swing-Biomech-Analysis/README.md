@@ -150,6 +150,28 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
+    <td><img src="Figures/Lefty_Peak_Velos.png" width="400"/></td>
+    <td><img src="Figures/Righty_Peak_Velos.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Frame_Diff.png" width="400"/></td>
+    <td><img src="Figures/Righty_Frame_Diff.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
     <td><img src="Figures/Lefty%20Efficiency.png" width="400"/></td>
     <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
   </tr>
