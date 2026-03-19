@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset.
+This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset, mainly focusing on the pelvis and torso.
 
 This takes two swings from different players, one from a lefty and one from a righty. These players are both the same height, weight, age, and playing level.
 
