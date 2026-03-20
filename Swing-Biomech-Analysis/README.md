@@ -36,9 +36,8 @@ The swing was segmented into:
 - **FP10 → FP100** 
 - **FP100 → FP100+20** *(fp 100 to 20 frames after fp100)*
 - **FP100+20 → Contact**
-
-- Lefty Frames: 487-507, 507-523, 523-543, 543-571
-- Righty Frames: 707-727, 727-744, 744-764, 764-797
+- **Lefty Frames: 487-507, 507-523, 523-543, 543-571**
+- **Righty Frames: 707-727, 727-744, 744-764, 764-797**
 
 ---
 
