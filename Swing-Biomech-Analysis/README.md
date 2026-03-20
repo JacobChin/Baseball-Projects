@@ -35,7 +35,9 @@ The swing was segmented into:
 - **FP10-20 → FP10** *(20 frames before fp10 to fp10)*
 - **FP10 → FP100** 
 - **FP100 → FP100+20** *(fp 100 to 20 frames after fp100)*
-- **FP100+20 → Contact** 
+- **FP100+20 → Contact**
+- **Lefty Frames: 487-507, 507-523, 523-543, 543-571**
+- **Righty Frames: 707-727, 727-744, 744-764, 764-797**
 
 ---
 
@@ -251,6 +253,17 @@ The swing was segmented into:
   <tr>
     <td><img src="Figures/Lefty%20Peak%20Force%20Numbers.png" width="400"/></td>
     <td><img src="Figures/Righty%20Peak%20Force%20Numbers.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Rear_Foot_Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty_Rear_Foot_Graph.png" width="400"/></td>
   </tr>
 </table>
 
