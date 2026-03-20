@@ -240,6 +240,17 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
+    <td><img src="Figures/Lefty_Rear_Foot_Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty_Rear_Foot_Graph.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
     <td><img src="Figures/Lefty%20Peak%20Force%20Graph.png" width="400"/></td>
     <td><img src="Figures/Righty%20Peak%20Force%20Graph.png" width="400"/></td>
   </tr>
@@ -262,8 +273,19 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty_Rear_Foot_Graph.png" width="400"/></td>
-    <td><img src="Figures/Righty_Rear_Foot_Graph.png" width="400"/></td>
+    <td><img src="Figures/Lefty%Impulse.png" width="400"/></td>
+    <td><img src="Figures/Righty%Impulse.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%Efficiency.png" width="400"/></td>
+    <td><img src="Figures/Righty%Efficiency.png" width="400"/></td>
   </tr>
 </table>
 
