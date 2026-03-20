@@ -41,30 +41,6 @@ The swing was segmented into:
 
 ---
 
-## Methods
-
-### Force Plate Analysis
-
-- Peak vertical force (Fz)
-- Time to peak force
-- Impulse across windows
-- Force curve shape
-
-### Rotational Kinematics
-
-- Pelvis angular velocity
-- Torso angular velocity
-- Elbow and hand velocity
-- Sequencing timing
-
-### Hip-Shoulder Separation
-
-- Separation at key events
-- Maximum separation
-- Separation velocity
-
----
-
 ## Lefty vs Righty Comparison
 
 <table>
