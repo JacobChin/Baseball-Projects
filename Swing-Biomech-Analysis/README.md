@@ -140,7 +140,9 @@ All metrics were computed independently for each swing and compared directly to 
 - Force production  
 - Rotational output  
 - Sequencing  
-- Energy transfer efficiency  
+- Energy transfer efficiency
+
+---
 
 ## Lefty vs Righty Comparison
 
