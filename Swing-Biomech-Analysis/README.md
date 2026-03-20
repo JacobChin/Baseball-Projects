@@ -189,6 +189,28 @@ The swing was segmented into:
 </table>
 
 <table>
+<tr>
+  <td align="center"><b>Lefty</b></td>
+  <td align="center"><b>Righty</b></td>
+</tr>
+<tr>
+  <td><img src="Figures/Lefty%20Pelvis%20angles.png" width="400"/></td>
+  <td><img src="Figures/Righty%20Pelvis%20angles.png" width="400"/></td>
+</tr>
+</table>
+
+<table>
+<tr>
+  <td align="center"><b>Lefty</b></td>
+  <td align="center"><b>Righty</b></td>
+</tr>
+<tr>
+  <td><img src="Figures/Lefty%20Torso%20Angles.png" width="400"/></td>
+  <td><img src="Figures/Righty%20Torso%20Angles.png" width="400"/></td>
+</tr>
+</table>
+
+<table>
   <tr>
     <td align="center"><b>Lefty</b></td>
     <td align="center"><b>Righty</b></td>
