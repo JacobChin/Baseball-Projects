@@ -60,22 +60,6 @@ Force plate data were mapped to the motion capture timeline using sampling rate 
 
 ---
 
-### Event-Based Segmentation
-The swing was segmented into four biomechanically meaningful windows based on lead-leg force development:
-
-1. FP10-20 → FP10  
-2. FP10 → FP100  
-3. FP100 → FP100+20  
-4. FP100+20 → Contact  
-
-These windows were chosen to capture:
-- Initial force acceptance  
-- Force buildup  
-- Transition to rotational acceleration  
-- Final acceleration into contact  
-
----
-
 ### Kinematic Analysis
 Joint angles and angular velocities were analyzed for:
 - Pelvis  
