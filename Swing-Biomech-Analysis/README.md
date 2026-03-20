@@ -264,3 +264,67 @@ The swing was segmented into:
     <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
   </tr>
 </table>
+
+## Key Takeaways
+
+### 1. Greater Rotational Output Drives Higher Bat Speed
+The right-handed hitter produced consistently higher angular velocities across all segments (pelvis, torso, elbow, and hand), culminating in substantially greater bat speed at contact. This indicates that the primary driver of the bat speed difference is increased rotational output rather than differences in setup or stride.
+
+---
+
+### 2. More Efficient Force-to-Rotation Conversion (FP10 → FP100)
+During the critical force development window (FP10 → FP100), the righty demonstrated higher pelvis acceleration per unit of force (efficiency), suggesting more effective conversion of ground reaction force into rotational motion.  
+
+This indicates superior use of the lead leg as a rotational driver rather than simply a stabilizing structure.
+
+---
+
+### 3. Superior Late-Phase Acceleration (FP100 → FP100+20)
+The righty generated significantly greater pelvis and torso acceleration immediately after reaching peak force (FP100), highlighting a more effective transition from force production to rotational acceleration.  
+
+This phase is critical for downstream energy transfer into the upper segments and ultimately the bat.
+
+---
+
+### 4. Earlier and More Rapid Kinematic Sequencing
+The righty exhibited tighter sequencing between segments:
+- Smaller pelvis → torso timing gap  
+- Faster progression from torso → elbow → hand  
+
+This indicates a more efficient kinetic chain, allowing energy to transfer more quickly and effectively through the system.
+
+---
+
+### 5. Greater Distal Segment Acceleration (Elbow and Hand)
+The righty showed substantially higher angular velocities and accelerations in the elbow and hand segments, particularly in the late swing phases.  
+
+This suggests that upstream improvements (pelvis/torso) are effectively cascading into distal segments, amplifying bat speed.
+
+---
+
+### 6. Rear-Foot Force Behavior Indicates Different Transfer Strategies
+The lefty demonstrated a clear rear-foot unloading pattern approaching contact, while the righty maintained rear-foot force deeper into the swing.  
+
+This suggests differing force-transfer strategies:
+- **Lefty:** earlier unloading and forward shift  
+- **Righty:** sustained rear-side force contributing to continued rotational support  
+
+The righty’s pattern appears more effective in maintaining rotational acceleration into contact.
+
+---
+
+### 7. Similar Setup, Different Outcomes
+Despite nearly identical conditions (pitch speed, distance, launch angle, player characteristics), the two swings produced significantly different outputs.  
+
+This reinforces that **small differences in sequencing and force application can result in large differences in performance outcomes**.
+
+---
+
+### Overall Conclusion
+The right-handed hitter’s higher bat speed is primarily driven by:
+- More efficient force utilization during FP10 → FP100  
+- Stronger and better-timed rotational acceleration after FP100  
+- Tighter kinematic sequencing  
+- Greater amplification into distal segments  
+
+Together, these factors create a more effective kinetic chain and higher bat speed at contact.
