@@ -273,8 +273,8 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%Impulse.png" width="400"/></td>
-    <td><img src="Figures/Righty%Impulse.png" width="400"/></td>
+    <td><img src="Figures/Lefty%20Impulse.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Impulse.png" width="400"/></td>
   </tr>
 </table>
 
@@ -284,8 +284,8 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty%Efficiency.png" width="400"/></td>
-    <td><img src="Figures/Righty%Efficiency.png" width="400"/></td>
+    <td><img src="Figures/Lefty%20Efficiency.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
   </tr>
 </table>
 
