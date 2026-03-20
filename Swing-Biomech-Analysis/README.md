@@ -195,7 +195,7 @@ The swing was segmented into:
   </tr>
   <tr>
     <td><img src="Lefty%20Pelvis%20angles.png" width="400"/></td>
-    <td><img src="Lefty%20Pelvis%20angles.png" width="400"/></td>
+    <td><img src="Righty%20Pelvis%20angles.png" width="400"/></td>
   </tr>
 </table>
 
