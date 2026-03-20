@@ -254,6 +254,17 @@ The swing was segmented into:
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Rear_Foot_Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty_Rear_Foot_Graph.png" width="400"/></td>
+  </tr>
+</table>
+
 ## Key Takeaways
 
 - **Peak force ≠ acceleration**
