@@ -359,7 +359,7 @@ This indicates superior use of the lead leg as a rotational driver rather than s
 ---
 
 ### 3. Superior Late-Phase Acceleration (FP100 → FP100+20)
-The righty generated significantly greater pelvis and torso acceleration immediately after reaching peak force (FP100), highlighting a more effective transition from force production to rotational acceleration.  
+The righty generated significantly greater pelvis and torso acceleration immediately after reaching peak force, highlighting a more effective transition from force production to rotational acceleration.  
 
 This phase is critical for downstream energy transfer into the upper segments and ultimately the bat.
 
