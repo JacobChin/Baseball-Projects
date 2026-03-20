@@ -69,7 +69,7 @@ Joint angles and angular velocities were analyzed for:
 
 Angular velocity magnitudes were computed using 3D components:
 
-|ω| = √(ωₓ² + ωᵧ² + ω_z²)
+**|ω| = √(ωₓ² + ωᵧ² + ω_z²)**
 
 Peak velocities and timing of peak velocities were extracted for each segment.
 
@@ -78,7 +78,7 @@ Peak velocities and timing of peak velocities were extracted for each segment.
 ### Acceleration and Sequencing
 Average angular acceleration was computed within each window:
 
-α = (ω_final − ω_initial) / Δt
+**α = (ω_final − ω_initial) / Δt**
 
 Segmental sequencing was evaluated using:
 - Timing differences between peak velocities  
@@ -96,14 +96,14 @@ Metrics included:
 
 Impulse was computed for each window:
 
-Impulse = Σ(F · Δt)
+**Impulse = Σ(F · Δt)**
 
 ---
 
 ### Efficiency Metric
 An efficiency metric was defined as:
 
-Efficiency = Acceleration / Impulse
+**Efficiency = Acceleration / Impulse**
 
 This quantifies how effectively force production translates into rotational acceleration.
 
