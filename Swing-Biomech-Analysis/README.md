@@ -44,6 +44,103 @@ The swing was segmented into:
 - **Righty Frames: 707-727, 727-744, 744-764, 764-797**
 
 ---
+## Methods
+
+### Data Source
+All data were obtained from the Driveline OpenBiomechanics dataset, including synchronized motion capture and force plate recordings.
+
+---
+
+### Signal Processing and Alignment
+- Motion capture data were sampled at 360 Hz  
+- Force plate data were sampled at a higher analog frequency and converted to the motion capture frame scale  
+- All signals were aligned using shared event markers (FP10, FP100, Contact)
+
+Force plate data were mapped to the motion capture timeline using sampling rate conversion to ensure temporal consistency across kinematic and kinetic variables.
+
+---
+
+### Event-Based Segmentation
+The swing was segmented into four biomechanically meaningful windows based on lead-leg force development:
+
+1. FP10-20 → FP10  
+2. FP10 → FP100  
+3. FP100 → FP100+20  
+4. FP100+20 → Contact  
+
+These windows were chosen to capture:
+- Initial force acceptance  
+- Force buildup  
+- Transition to rotational acceleration  
+- Final acceleration into contact  
+
+---
+
+### Kinematic Analysis
+Joint angles and angular velocities were analyzed for:
+- Pelvis  
+- Torso  
+- Lead elbow  
+- Lead hand  
+
+Angular velocity magnitudes were computed using 3D components:
+
+\[
+|\omega| = \sqrt{\omega_x^2 + \omega_y^2 + \omega_z^2}
+\]
+
+Peak velocities and timing of peak velocities were extracted for each segment.
+
+---
+
+### Acceleration and Sequencing
+Average angular acceleration was computed within each window:
+
+\[
+\alpha = \frac{\Delta \omega}{\Delta t}
+\]
+
+Segmental sequencing was evaluated using:
+- Timing differences between peak velocities  
+- Frame and time offsets relative to FP10  
+
+---
+
+### Force Plate Analysis
+Vertical ground reaction forces (Fz) were analyzed for both lead and rear legs.
+
+Metrics included:
+- Force-time curves  
+- Peak force magnitude and timing  
+- Rear-foot unloading behavior  
+
+Impulse was computed for each window:
+
+\[
+\text{Impulse} = \sum F \cdot \Delta t
+\]
+
+---
+
+### Efficiency Metric
+An efficiency metric was defined as:
+
+\[
+\text{Efficiency} = \frac{\text{Segment Acceleration}}{\text{Impulse}}
+\]
+
+This quantifies how effectively force production translates into rotational acceleration.
+
+Efficiency was evaluated for windows with sufficient force magnitude (FP10 onward) to ensure stability of the metric.
+
+---
+
+### Comparative Approach
+All metrics were computed independently for each swing and compared directly to identify differences in:
+- Force production  
+- Rotational output  
+- Sequencing  
+- Energy transfer efficiency  
 
 ## Lefty vs Righty Comparison
 
