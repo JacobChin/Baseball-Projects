@@ -1,5 +1,9 @@
 # Baseball Swing Biomechanics Analysis
 
+## Summary
+
+This analysis compares two biomechanically similar hitters under identical conditions and identifies key differences in force application, sequencing, and rotational efficiency that explain a ~9 mph difference in bat speed.
+
 ## Overview
 
 This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset, mainly focusing on the pelvis and torso.
