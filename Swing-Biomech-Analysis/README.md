@@ -12,7 +12,7 @@ This takes two swings from different players, one from a lefty and one from a ri
 
 All swings were off of the same machine set at ~65 mph from ~40 ft away from home plate, and both of these swings had the same launch angle and were to the pull side.
 
-The lefty had a max bat speed of 68.25 and a bat speed of 67.29 at contact, while the righty had a max bat speed of 76.32 and a bat speed of 74.51 at contact.
+The lefty had a max bat speed of 68.25 and a bat speed of 67.29 at contact, while the righty had a max bat speed of 78.31 and a bat speed of 77.40 at contact.
 
 The goal is to understand some of the reasons why the righty is able to produce such a significant amount of bat speed compared to the lefty.
 
