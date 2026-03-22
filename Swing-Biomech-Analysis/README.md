@@ -1,5 +1,9 @@
 # Baseball Swing Biomechanics Analysis
 
+## Summary
+
+This analysis compares two biomechanically similar hitters under identical conditions and identifies key differences in force application, sequencing, and rotational efficiency that explain a ~10 mph difference in bat speed.
+
 ## Overview
 
 This project analyzes biomechanical differences between baseball swings using motion capture and force plate data from the Driveline OpenBiomechanics dataset, mainly focusing on the pelvis and torso.
@@ -8,7 +12,7 @@ This takes two swings from different players, one from a lefty and one from a ri
 
 All swings were off of the same machine set at ~65 mph from ~40 ft away from home plate, and both of these swings had the same launch angle and were to the pull side.
 
-The lefty had a max bat speed of 68.25 and a bat speed of 67.29 at contact, while the righty had a max bat speed of 76.32 and a bat speed of 74.51 at contact.
+The lefty had a max bat speed of 68.25 and a bat speed of 67.29 at contact, while the righty had a max bat speed of 78.31 and a bat speed of 77.40 at contact.
 
 The goal is to understand some of the reasons why the righty is able to produce such a significant amount of bat speed compared to the lefty.
 
@@ -40,28 +44,79 @@ The swing was segmented into:
 - **Righty Frames: 707-727, 727-744, 744-764, 764-797**
 
 ---
-
 ## Methods
 
+### Data Source
+All data were obtained from the Driveline OpenBiomechanics dataset, including synchronized motion capture and force plate recordings.
+
+---
+
+### Signal Processing and Alignment
+- Motion capture data were sampled at 360 Hz  
+- Force plate data were sampled at a higher analog frequency and converted to the motion capture frame scale  
+- All signals were aligned using shared event markers (FP10, FP100, Contact)
+
+Force plate data were mapped to the motion capture timeline using sampling rate conversion to ensure temporal consistency across kinematic and kinetic variables.
+
+---
+
+### Kinematic Analysis
+Joint angles and angular velocities were analyzed for:
+- Pelvis  
+- Torso  
+- Lead elbow  
+- Lead hand  
+
+Angular velocity magnitudes were computed using 3D components:
+
+**|ω| = √(ωₓ² + ωᵧ² + ω_z²)**
+
+Peak velocities and timing of peak velocities were extracted for each segment.
+
+---
+
+### Acceleration and Sequencing
+Average angular acceleration was computed within each window:
+
+**α = (ω_final − ω_initial) / Δt**
+
+Segmental sequencing was evaluated using:
+- Timing differences between peak velocities  
+- Frame and time offsets relative to FP10  
+
+---
+
 ### Force Plate Analysis
+Vertical ground reaction forces (Fz) were analyzed for both lead and rear legs.
 
-- Peak vertical force (Fz)
-- Time to peak force
-- Impulse across windows
-- Force curve shape
+Metrics included:
+- Force-time curves  
+- Peak force magnitude and timing  
+- Rear-foot unloading behavior  
 
-### Rotational Kinematics
+Impulse was computed for each window:
 
-- Pelvis angular velocity
-- Torso angular velocity
-- Elbow and hand velocity
-- Sequencing timing
+**Impulse = Σ(F · Δt)**
 
-### Hip-Shoulder Separation
+---
 
-- Separation at key events
-- Maximum separation
-- Separation velocity
+### Efficiency Metric
+An efficiency metric was defined as:
+
+**Efficiency = Acceleration / Impulse**
+
+This quantifies how effectively force production translates into rotational acceleration.
+
+Efficiency was evaluated for windows with sufficient force magnitude (FP10 onward) to ensure stability of the metric.
+
+---
+
+### Comparative Approach
+All metrics were computed independently for each swing and compared directly to identify differences in:
+- Force production  
+- Rotational output  
+- Sequencing  
+- Energy transfer efficiency
 
 ---
 
@@ -240,6 +295,17 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
+    <td><img src="Figures/Lefty_Rear_Foot_Graph.png" width="400"/></td>
+    <td><img src="Figures/Righty_Rear_Foot_Graph.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
     <td><img src="Figures/Lefty%20Peak%20Force%20Graph.png" width="400"/></td>
     <td><img src="Figures/Righty%20Peak%20Force%20Graph.png" width="400"/></td>
   </tr>
@@ -262,42 +328,82 @@ The swing was segmented into:
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
-    <td><img src="Figures/Lefty_Rear_Foot_Graph.png" width="400"/></td>
-    <td><img src="Figures/Righty_Rear_Foot_Graph.png" width="400"/></td>
+    <td><img src="Figures/Lefty%20Impulse.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Impulse.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty%20Efficiency.png" width="400"/></td>
+    <td><img src="Figures/Righty%20Efficiency.png" width="400"/></td>
   </tr>
 </table>
 
 ## Key Takeaways
 
-- **Peak force ≠ acceleration**
-  - The righty generates higher peak lead leg force, but overall impulse is similar between swings.
-  - This shows that how force is applied over time (not just peak magnitude) is critical for generating rotational acceleration.
+### 1. Greater Rotational Output Drives Higher Bat Speed
+The right-handed hitter produced consistently higher angular velocities across all segments (pelvis, torso, elbow, and hand), culminating in substantially greater bat speed at contact. This indicates that the primary driver of the bat speed difference is increased rotational output rather than differences in setup or stride.
 
-- **Force timing drives rotational acceleration**
-  - The righty produces a sharper, more time-concentrated force application, leading to higher pelvis acceleration.
-  - The lefty applies force over a longer window, resulting in similar impulse but lower peak acceleration.
+---
 
-- **Early-phase differences matter**
-  - From FP10-20 → FP10, the lefty actually shows higher early pelvis acceleration and rotation.
-  - However, this does not translate into later explosive acceleration into FP100 and beyond.
+### 2. More Efficient Force-to-Rotation Conversion (FP10 → FP100)
+During the critical force development window (FP10 → FP100), the righty demonstrated higher pelvis acceleration per unit of force (efficiency), suggesting more effective conversion of ground reaction force into rotational motion.  
 
-- **Energy transfer inefficiency in the lefty**
-  - Despite similar impulse, the lefty converts force into rotational velocity less efficiently.
-  - This suggests potential losses in:
-    - segment sequencing  
-    - lead leg blocking  
-    - or rotational stiffness
+This indicates superior use of the lead leg as a rotational driver rather than simply a stabilizing structure.
 
-- **Sequencing and acceleration windows are key separators**
-  - The righty shows a more pronounced acceleration window between FP100 → contact.
-  - This aligns with more effective proximal-to-distal energy transfer.
+---
 
-- **Multi-planar contributions remain consistent**
-  - Most rotational velocity is driven by the axial (z) plane, with smaller contributions from x and y.
-  - Differences between hitters are driven more by magnitude and timing than by directional strategy.
+### 3. Superior Late-Phase Acceleration (FP100 → FP100+20)
+The righty generated significantly greater pelvis and torso acceleration immediately after reaching peak force, highlighting a more effective transition from force production to rotational acceleration.  
 
-- **Practical implication**
-  - Improving the lefty’s performance likely requires:
-    - increasing peak force rate (RFD)  
-    - improving lead leg block stiffness  
-    - tightening timing of force application relative to rotation  
+This phase is critical for downstream energy transfer into the upper segments and ultimately the bat.
+
+---
+
+### 4. Earlier and More Rapid Kinematic Sequencing
+The righty exhibited tighter sequencing between segments:
+- Smaller pelvis → torso timing gap  
+- Faster progression from torso → elbow → hand  
+
+This indicates a more efficient kinetic chain, allowing energy to transfer more quickly and effectively through the system.
+
+---
+
+### 5. Greater Distal Segment Acceleration (Elbow and Hand)
+The righty showed substantially higher angular velocities and accelerations in the elbow and hand segments, particularly in the late swing phases.  
+
+This suggests that upstream improvements (pelvis/torso) are effectively cascading into distal segments, amplifying bat speed.
+
+---
+
+### 6. Rear-Foot Force Behavior Indicates Different Transfer Strategies
+The lefty demonstrated a clear rear-foot unloading pattern approaching contact, while the righty maintained rear-foot force deeper into the swing.  
+
+This suggests differing force-transfer strategies:
+- **Lefty:** earlier unloading and forward shift  
+- **Righty:** sustained rear-side force contributing to continued rotational support  
+
+The righty’s pattern appears more effective in maintaining rotational acceleration into contact.
+
+---
+
+### 7. Similar Setup, Different Outcomes
+Despite nearly identical conditions (pitch speed, distance, launch angle, player characteristics), the two swings produced significantly different outputs.  
+
+This reinforces that **small differences in sequencing and force application can result in large differences in performance outcomes**.
+
+---
+
+### Overall Conclusion
+The right-handed hitter’s higher bat speed is primarily driven by:
+- More efficient force utilization during FP10 → FP100  
+- Stronger and better-timed rotational acceleration after FP100  
+- Tighter kinematic sequencing  
+- Greater amplification into distal segments  
+
+Together, these factors create a more effective kinetic chain and higher bat speed at contact.
