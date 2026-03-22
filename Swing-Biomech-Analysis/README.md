@@ -551,6 +551,4 @@ Several additional factors could further strengthen this analysis:
 
 These additions would provide a more complete understanding of how physical capacity, mechanics, and constraints interact to influence swing performance.
 
-Lastly, being able to test these two swings in a game like environment with time constraints would be interesting to see if the efficiency of the right handed swing will break or not.
-
 
