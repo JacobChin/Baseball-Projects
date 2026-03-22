@@ -418,115 +418,131 @@ All metrics were computed independently for each swing and compared directly to 
 
 ## Key Takeaways
 
-### 1. Greater Rotational Output Drives Higher Bat Speed
-The right-handed hitter produced consistently higher angular velocities across all segments (pelvis, torso, elbow, and hand), culminating in substantially greater bat speed at contact. This indicates that the primary driver of the bat speed difference is increased rotational output rather than differences in setup or stride.
+### 1. Setup is Similar, but Rotational Strategy Differs Early
+
+Both hitters demonstrate nearly identical setup characteristics, including stride length and overall positioning. However, key differences emerge at FP100:
+
+- The lefty exhibits a more open pelvis relative to the pitcher  
+- The lefty achieves greater early hip-shoulder separation (27.66° vs. 16.16°)  
+- The righty maintains a more closed pelvis and torso orientation  
+
+This indicates that the lefty initiates rotation earlier, while the righty delays rotational opening.
 
 ---
 
-### 2. More Efficient Force-to-Rotation Conversion (FP10 → FP100)
-During the critical force development window (FP10 → FP100), the righty demonstrated higher pelvis acceleration per unit of force (efficiency), suggesting more effective conversion of ground reaction force into rotational motion.  
+### 2. Early vs Late Acceleration Strategy
 
-This indicates superior use of the lead leg as a rotational driver rather than simply a stabilizing structure.
+The lefty generates higher pelvis velocity early in the swing (FP10), reflecting an **early-acceleration strategy**.  
 
----
+In contrast, the righty demonstrates lower early velocity but significantly greater acceleration after FP100, indicating a **delayed but more explosive acceleration pattern**.
 
-### 3. Superior Late-Phase Acceleration (FP100 → FP100+20)
-The righty generated significantly greater pelvis and torso acceleration immediately after reaching peak force, highlighting a more effective transition from force production to rotational acceleration.  
-
-This phase is critical for downstream energy transfer into the upper segments and ultimately the bat.
+This difference in timing of acceleration is a key separator between the two swings.
 
 ---
 
-### 4. Earlier and More Rapid Kinematic Sequencing
-The righty exhibited tighter sequencing between segments:
+### 3. Superior Late-Phase Acceleration Drives Performance
+
+From FP100 → FP100+20, the righty exhibits substantially higher pelvis and torso acceleration, representing a more effective transition from force production into rotational motion.
+
+This late-phase acceleration is critical, as it directly feeds into distal segment speed and ultimately bat speed at contact.
+
+---
+
+### 4. More Efficient Kinematic Sequencing in the Righty
+
+The righty demonstrates tighter and more efficient sequencing:
+
 - Smaller pelvis → torso timing gap  
 - Faster progression from torso → elbow → hand  
+- More synchronized peak velocities across segments  
 
-This indicates a more efficient kinetic chain, allowing energy to transfer more quickly and effectively through the system.
-
----
-
-### 5. Greater Distal Segment Acceleration (Elbow and Hand)
-The righty showed substantially higher angular velocities and accelerations in the elbow and hand segments, particularly in the late swing phases.  
-
-This suggests that upstream improvements (pelvis/torso) are effectively cascading into distal segments, amplifying bat speed.
+This allows energy to transfer more efficiently through the kinetic chain, minimizing energy loss between segments.
 
 ---
 
-### 6. Rear-Foot Force Behavior Indicates Different Transfer Strategies
-The lefty demonstrated a clear rear-foot unloading pattern approaching contact, while the righty maintained rear-foot force deeper into the swing.  
+### 5. Greater Distal Segment Output (Elbow and Hand)
 
-This suggests differing force-transfer strategies:
-- **Lefty:** earlier unloading and forward shift  (more of a forward move)
-- **Righty:** sustained rear-side force contributing to continued rotational support (staying back more) 
+The righty produces significantly higher angular velocities in the elbow and hand, particularly in the late phases of the swing.
 
-The righty’s pattern appears more effective in maintaining rotational acceleration into contact.
+This confirms that upstream advantages (force timing and rotational acceleration) are effectively transferred into the distal segments, amplifying bat speed.
 
 ---
 
-### 7. Similar Setup, Different Outcomes
-Despite nearly identical conditions (pitch speed, location, launch angle, player characteristics), the two swings produced significantly different outputs.  
+### 6. Rotational Patterns: Early Opening vs Sustained Rotation
 
-This reinforces that **small differences in sequencing and force application can result in large differences in performance outcomes**.
+Angle data shows that the lefty:
 
----
+- Opens the pelvis earlier  
+- Builds separation sooner  
+- Rotates more gradually through the swing  
 
-### 8. More Forward Contact and Longer Barrel Path Enable Greater Acceleration
+Whereas the righty:
 
-The righty generated a longer barrel path from FP10 to contact (128.48 in vs. 116.10 in) and made contact farther out in front of the torso (21.88 in vs. 19.10 in).
+- Stays closed longer  
+- Builds separation later  
+- Rotates more aggressively in the later phases  
 
-This combination suggests the righty is able to accelerate the barrel over a greater distance before contact while also delivering the barrel to a more forward position. A longer path provides more opportunity for speed to build, while a more forward contact point indicates that rotational energy is carried further through the swing before impact. It would be interesting to see the bat speed at the same contact point, but bat speeds were only given at contact or at max speed.
-
----
-## Hip-Shoulder Separation and Early Acceleration Strategy
-
-### Hip-Shoulder Separation at FP100
-
-At FP100, the lefty exhibited greater hip-shoulder separation (27.66° vs. 16.16°), along with a more open pelvis relative to the pitcher (16.91° vs. -4.36° for the righty).
-
-This indicates that the lefty begins rotating the pelvis earlier in the swing, creating separation sooner between the lower and upper body segments.
+This suggests that the lefty’s rotation is **front-loaded**, while the righty’s rotation is **sustained and back-loaded**, leading to greater speed closer to contact.
 
 ---
 
-### Early Acceleration Pattern (FP10 → FP100)
+### 7. Longer Barrel Path and More Forward Contact Support Greater Acceleration
 
-The lefty demonstrated higher pelvis angular velocity at FP10 (505.88 deg/s vs. 399.78 deg/s), as well as strong early acceleration into FP100. This suggests a strategy focused on **early rotational initiation**, where the pelvis begins rotating aggressively soon after initial force production.
+The righty exhibits:
 
-In contrast, the righty shows lower pelvis velocity early but accelerates more aggressively later in the swing.
+- A longer barrel path (128.48 in vs. 116.10 in)  
+- A more forward contact position (21.88 in vs. 19.10 in)  
 
----
+This indicates that the righty is able to accelerate the bat over a greater distance and carry that acceleration further into contact.
 
-### Interpretation of Strategy Differences
-
-These findings suggest two distinct rotational strategies:
-
-- **Lefty: Early Rotation Strategy**
-  - Opens the pelvis earlier
-  - Achieves greater early hip-shoulder separation
-  - Builds rotational speed sooner in the swing
-  - Likely relies on early energy generation and transfer
-
-- **Righty: Delayed but Explosive Rotation Strategy**
-  - Keeps the pelvis more closed longer
-  - Delays peak separation
-  - Accelerates more aggressively after FP100
-  - Sustains acceleration deeper into the swing
+Importantly, this additional path length is paired with higher efficiency (bat speed per inch), suggesting that it reflects **productive acceleration rather than inefficiency**.
 
 ---
 
-### Tradeoffs and Performance Implications
+### 8. Similar Force Production, Different Outcomes
 
-While the lefty generates early separation and rotational speed, this early opening may limit the ability to continue accelerating later in the swing. This is supported by the lefty’s drop-off in acceleration after FP100+20 and lower distal segment speeds approaching contact.
+Both hitters generate nearly identical impulse during FP10 → FP100, indicating similar total force production.
 
-In contrast, the righty’s more closed pelvis and delayed separation appear to allow for **greater late-phase acceleration**, contributing to higher distal segment velocities and increased bat speed at contact.
+However, the righty demonstrates significantly higher pelvis acceleration per unit of force, especially during:
+
+- FP10 → FP100  
+- FP100 → FP100+20  
+
+This indicates that performance differences are driven not by force magnitude, but by **how efficiently force is converted into rotation**.
 
 ---
 
-### Summary
+### 9. Earlier Force Utilization and Sustained Rear-Side Support
 
-The lefty’s swing is characterized by **early rotation and early separation**, while the righty demonstrates a more **delayed but sustained acceleration pattern**.  
+The righty reaches peak force earlier after FP100 and maintains rear-foot force deeper into the swing, while the lefty unloads the rear foot earlier.
 
-Although early separation can be advantageous for initiating rotation, the righty’s ability to maintain and amplify acceleration later in the swing appears to be more effective for generating bat speed.
+This suggests that the righty:
+
+- Utilizes force earlier in the swing  
+- Maintains rotational support longer  
+- Sustains acceleration deeper into the swing  
+
+---
+
+### 10. Force and Kinematics Combine to Drive Bat Speed Differences
+
+The righty’s higher bat speed is the result of a combination of:
+
+- More efficient force-to-rotation conversion  
+- Stronger late-phase acceleration  
+- More effective sequencing  
+- Greater distal segment amplification  
+- Longer and more efficient barrel path  
+
+Together, these factors create a more effective kinetic chain and allow for greater bat speed at contact.
+
+---
+
+### Overall Conclusion
+
+Despite similar setup and total force production, the righty demonstrates a more efficient and better-timed use of force, resulting in superior rotational acceleration, sequencing, and distal segment output.
+
+This highlights that bat speed is not primarily determined by how much force is produced, but by how effectively that force is transferred through the kinetic chain.
 
 ### Overall Conclusion
 The right-handed hitter’s higher bat speed is primarily driven by:
