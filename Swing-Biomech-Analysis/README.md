@@ -185,6 +185,28 @@ All metrics were computed independently for each swing and compared directly to 
     <td align="center"><b>Righty</b></td>
   </tr>
   <tr>
+    <td><img src="Figures/Lefty_Path.png" width="400"/></td>
+    <td><img src="Figures/Righty_Path.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
+    <td><img src="Figures/Lefty_Contact_Point.png" width="400"/></td>
+    <td><img src="Figures/Righty_Contact_Point.png" width="400"/></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Lefty</b></td>
+    <td align="center"><b>Righty</b></td>
+  </tr>
+  <tr>
     <td><img src="Figures/Lefty_All_Pelvis_Velos_Acc.png" width="400"/></td>
     <td><img src="Figures/Righty_All_Pelvis_Velos_Acc.png" width="400"/></td>
   </tr>
