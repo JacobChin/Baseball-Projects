@@ -2,7 +2,13 @@
 
 ## Summary
 
-This analysis compares two biomechanically similar hitters under identical conditions and identifies key differences in force application, sequencing, and rotational efficiency that explain a ~10 mph difference in bat speed.
+## Summary
+
+This analysis compares two biomechanically similar hitters under identical conditions and explains a ~10 mph difference in bat speed through differences in force utilization, rotational timing, and kinetic chain efficiency.
+
+Despite generating nearly identical total force, the higher-performing hitter demonstrates superior force-to-rotation conversion, more effective late-phase acceleration, tighter kinematic sequencing, and a longer, more efficient barrel path. These factors collectively result in greater distal segment speeds and increased bat speed at contact.
+
+This study highlights that bat speed is not primarily driven by force production alone, but by how efficiently that force is transferred through the kinetic chain.
 
 ## Overview
 
@@ -535,19 +541,17 @@ Together, these factors create a more effective kinetic chain and allow for grea
 
 ---
 
-### Overall Conclusion and Other Thoughts
+### Limitations and Future Work
 
-Despite similar setup and total force production, the righty demonstrates a more efficient and better-timed use of force, resulting in superior rotational acceleration, sequencing, and distal segment output.
+Several additional factors could further strengthen this analysis:
 
-This highlights that bat speed is not primarily determined by how much force is produced, but by how effectively that force is transferred through the kinetic chain.
+- Quantifying the direction and vector of the lead leg block to better understand how force is applied into rotation  
+- Incorporating athlete force capacity metrics (e.g., IMTP, countermovement jump) to contextualize force production capabilities  
+- Tracking bat speed continuously throughout the swing to better characterize acceleration profiles  
+- Accounting for bat moment of inertia (MOI), which can significantly influence achievable bat speed  
+- Evaluating performance under game-like time constraints to assess whether these efficiency patterns persist under pressure  
 
-Being able to track direction of lead leg block would be interesting to see if there are any differences there.
-
-Having access to peak force measurements for these players like IMTP or countermovement jumps will get a better understanding of total capacity of force production over time.
-
-Tracking bat speed throughout the entire swing would also give more insight into acceleration.
-
-Also, knowing the MOI of each bat makes a significant difference in bat speed.
+These additions would provide a more complete understanding of how physical capacity, mechanics, and constraints interact to influence swing performance.
 
 Lastly, being able to test these two swings in a game like environment with time constraints would be interesting to see if the efficiency of the right handed swing will break or not.
 
