@@ -477,6 +477,7 @@ The right-handed hitter’s higher bat speed is primarily driven by:
 - More efficient force utilization during FP10 → FP100  
 - Stronger and better-timed rotational acceleration after FP100  
 - Tighter kinematic sequencing  
-- Greater amplification into distal segments  
+- Greater amplification into distal segments
+- Longer bat path and making contact more out in front of the center of mass  
 
 Together, these factors create a more effective kinetic chain and higher bat speed at contact.
