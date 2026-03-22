@@ -496,7 +496,6 @@ The righty exhibits:
 - A more forward contact position (21.88 in vs. 19.10 in)  
 
 This indicates that the righty is able to accelerate the bat over a greater distance and carry that acceleration further into contact.
-.
 
 ---
 
