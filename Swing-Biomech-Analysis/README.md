@@ -450,8 +450,8 @@ This suggests that upstream improvements (pelvis/torso) are effectively cascadin
 The lefty demonstrated a clear rear-foot unloading pattern approaching contact, while the righty maintained rear-foot force deeper into the swing.  
 
 This suggests differing force-transfer strategies:
-- **Lefty:** earlier unloading and forward shift  
-- **Righty:** sustained rear-side force contributing to continued rotational support  
+- **Lefty:** earlier unloading and forward shift  (more of a forward move)
+- **Righty:** sustained rear-side force contributing to continued rotational support (staying back more) 
 
 The righty’s pattern appears more effective in maintaining rotational acceleration into contact.
 
