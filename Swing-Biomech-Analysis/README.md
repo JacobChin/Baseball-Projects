@@ -59,7 +59,50 @@ All data were obtained from the Driveline OpenBiomechanics dataset, including sy
 Force plate data were mapped to the motion capture timeline using sampling rate conversion to ensure temporal consistency across kinematic and kinetic variables.
 
 ---
+## Barrel Path and Contact Position
 
+### Barrel Path Length
+
+Barrel path length was defined as the total distance traveled by the distal end of the bat from FP10 to contact. The distal bat position was approximated using the midpoint between MARKER2 and MARKER3, which together represent the tip region of the bat.
+
+At each frame, the position of the bat tip was computed as:
+
+tip = 0.5 × (MARKER2 + MARKER3)
+
+The total path length was then calculated by summing the frame-to-frame Euclidean distances of this point from FP10 to contact:
+
+Path Length = Σ √[(Δx)² + (Δy)² + (Δz)²]
+
+This provides a measure of how far the bat travels through space during the acceleration phase of the swing.
+
+---
+
+### Contact Position (Forward Distance)
+
+Contact position was defined as the forward (x-axis) distance between the hitter’s sternum marker (STRN) and the bat tip at the frame of contact.
+
+In the dataset’s coordinate system:
+- +x points from home plate toward the pitcher  
+- +y points toward the right-handed batter’s box  
+- +z points upward  
+
+The bat contact point was approximated using the same distal bat estimate:
+
+contact_point = 0.5 × (MARKER2 + MARKER3)
+
+The forward distance at contact was then computed as:
+
+Δx = x_contact − x_sternum
+
+This value represents how far “out in front” of the torso contact occurs, independent of vertical or lateral position.
+
+---
+
+### Notes on Bat Representation
+
+MARKER2 and MARKER3 define the distal end of the bat rather than the exact barrel sweet spot. As a result, both barrel path length and contact position are approximations of true barrel behavior. However, this approach provides a consistent and reliable proxy for comparing swing kinematics across players.
+
+---
 ### Kinematic Analysis
 Joint angles and angular velocities were analyzed for:
 - Pelvis  
