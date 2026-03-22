@@ -540,13 +540,3 @@ Together, these factors create a more effective kinetic chain and allow for grea
 Despite similar setup and total force production, the righty demonstrates a more efficient and better-timed use of force, resulting in superior rotational acceleration, sequencing, and distal segment output.
 
 This highlights that bat speed is not primarily determined by how much force is produced, but by how effectively that force is transferred through the kinetic chain.
-
-### Overall Conclusion
-The right-handed hitter’s higher bat speed is primarily driven by:
-- More efficient force utilization during FP10 → FP100  
-- Stronger and better-timed rotational acceleration after FP100  
-- Tighter kinematic sequencing  
-- Greater amplification into distal segments
-- Longer bat path and making contact more out in front of the center of mass  
-
-Together, these factors create a more effective kinetic chain and higher bat speed at contact.
