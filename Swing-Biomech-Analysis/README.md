@@ -2,8 +2,6 @@
 
 ## Summary
 
-## Summary
-
 This analysis compares two biomechanically similar hitters under identical conditions and explains a ~10 mph difference in bat speed through differences in force utilization, rotational timing, and kinetic chain efficiency.
 
 Despite generating nearly identical total force, the higher-performing hitter demonstrates superior force-to-rotation conversion, more effective late-phase acceleration, tighter kinematic sequencing, and a longer, more efficient barrel path. These factors collectively result in greater distal segment speeds and increased bat speed at contact.
