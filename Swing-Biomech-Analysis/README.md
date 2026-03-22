@@ -460,7 +460,7 @@ The righty’s pattern appears more effective in maintaining rotational accelera
 ---
 
 ### 7. Similar Setup, Different Outcomes
-Despite nearly identical conditions (pitch speed, distance, launch angle, player characteristics), the two swings produced significantly different outputs.  
+Despite nearly identical conditions (pitch speed, location, launch angle, player characteristics), the two swings produced significantly different outputs.  
 
 This reinforces that **small differences in sequencing and force application can result in large differences in performance outcomes**.
 
