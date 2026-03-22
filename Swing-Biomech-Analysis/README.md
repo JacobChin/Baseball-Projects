@@ -464,7 +464,7 @@ This reinforces that **small differences in sequencing and force application can
 
 ---
 
-8. More Forward Contact and Longer Barrel Path Enable Greater Acceleration
+### 8. More Forward Contact and Longer Barrel Path Enable Greater Acceleration
 
 The righty generated a longer barrel path from FP10 to contact (128.48 in vs. 116.10 in) and made contact farther out in front of the torso (21.88 in vs. 19.10 in).
 
