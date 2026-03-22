@@ -535,8 +535,20 @@ Together, these factors create a more effective kinetic chain and allow for grea
 
 ---
 
-### Overall Conclusion
+### Overall Conclusion and Other Thoughts
 
 Despite similar setup and total force production, the righty demonstrates a more efficient and better-timed use of force, resulting in superior rotational acceleration, sequencing, and distal segment output.
 
 This highlights that bat speed is not primarily determined by how much force is produced, but by how effectively that force is transferred through the kinetic chain.
+
+Being able to track direction of lead leg block would be interesting to see if there are any differences there.
+
+Having access to peak force measurements for these players like IMTP or countermovement jumps will get a better understanding of total capacity of force production over time.
+
+It would be interesting to test these swings with game like velocities and different pitch types to see if the righty can sustain this type of swing in time constrained environments.
+
+Also, knowing the MOI of each bat makes a significant difference in bat speed.
+
+Lastly, being able to test these two swings in a game like environment with time constraints would be interesting to see if the efficiency of the right handed swing will break or not.
+
+
