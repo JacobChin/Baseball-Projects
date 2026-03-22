@@ -539,7 +539,7 @@ Together, these factors create a more effective kinetic chain and allow for grea
 
 ---
 
-### Limitations and Future Work
+## Limitations and Future Work
 
 Several additional factors could further strengthen this analysis:
 
