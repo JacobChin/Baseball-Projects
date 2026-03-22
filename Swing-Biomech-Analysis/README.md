@@ -312,6 +312,8 @@ All metrics were computed independently for each swing and compared directly to 
   </tr>
 </table>
 
+# Angles
+
 <table>
 <tr>
   <td align="center"><b>Lefty</b></td>
@@ -355,6 +357,8 @@ All metrics were computed independently for each swing and compared directly to 
   <td><img src="Figures/Righty_Torso_Angle_Changes.png" width="400"/></td>
 </tr>
 </table>
+
+# Force Production
 
 <table>
   <tr>
