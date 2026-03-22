@@ -482,8 +482,6 @@ Whereas the righty:
 - Builds separation later  
 - Rotates more aggressively in the later phases  
 
-This suggests that the lefty’s rotation is **front-loaded**, while the righty’s rotation is **sustained and back-loaded**, leading to greater speed closer to contact.
-
 ---
 
 ### 7. Longer Barrel Path and More Forward Contact Support Greater Acceleration
@@ -494,8 +492,7 @@ The righty exhibits:
 - A more forward contact position (21.88 in vs. 19.10 in)  
 
 This indicates that the righty is able to accelerate the bat over a greater distance and carry that acceleration further into contact.
-
-Importantly, this additional path length is paired with higher efficiency (bat speed per inch), suggesting that it reflects **productive acceleration rather than inefficiency**.
+.
 
 ---
 
