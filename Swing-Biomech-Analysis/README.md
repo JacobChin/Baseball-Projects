@@ -464,6 +464,14 @@ This reinforces that **small differences in sequencing and force application can
 
 ---
 
+8. More Forward Contact and Longer Barrel Path Enable Greater Acceleration
+
+The righty generated a longer barrel path from FP10 to contact (128.48 in vs. 116.10 in) and made contact farther out in front of the torso (21.88 in vs. 19.10 in).
+
+This combination suggests the righty is able to accelerate the barrel over a greater distance before contact while also delivering the barrel to a more forward position. A longer path provides more opportunity for speed to build, while a more forward contact point indicates that rotational energy is carried further through the swing before impact. It would be interesting to see the bat speed at the same contact point, but bat speeds were only given at contact or at max speed.
+
+---
+
 ### Overall Conclusion
 The right-handed hitter’s higher bat speed is primarily driven by:
 - More efficient force utilization during FP10 → FP100  
