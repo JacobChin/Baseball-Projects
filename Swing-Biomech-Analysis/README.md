@@ -473,6 +473,55 @@ The righty generated a longer barrel path from FP10 to contact (128.48 in vs. 11
 This combination suggests the righty is able to accelerate the barrel over a greater distance before contact while also delivering the barrel to a more forward position. A longer path provides more opportunity for speed to build, while a more forward contact point indicates that rotational energy is carried further through the swing before impact. It would be interesting to see the bat speed at the same contact point, but bat speeds were only given at contact or at max speed.
 
 ---
+## Hip-Shoulder Separation and Early Acceleration Strategy
+
+### Hip-Shoulder Separation at FP100
+
+At FP100, the lefty exhibited greater hip-shoulder separation (27.66° vs. 16.16°), along with a more open pelvis relative to the pitcher (16.91° vs. -4.36° for the righty).
+
+This indicates that the lefty begins rotating the pelvis earlier in the swing, creating separation sooner between the lower and upper body segments.
+
+---
+
+### Early Acceleration Pattern (FP10 → FP100)
+
+The lefty demonstrated higher pelvis angular velocity at FP10 (505.88 deg/s vs. 399.78 deg/s), as well as strong early acceleration into FP100. This suggests a strategy focused on **early rotational initiation**, where the pelvis begins rotating aggressively soon after initial force production.
+
+In contrast, the righty shows lower pelvis velocity early but accelerates more aggressively later in the swing.
+
+---
+
+### Interpretation of Strategy Differences
+
+These findings suggest two distinct rotational strategies:
+
+- **Lefty: Early Rotation Strategy**
+  - Opens the pelvis earlier
+  - Achieves greater early hip-shoulder separation
+  - Builds rotational speed sooner in the swing
+  - Likely relies on early energy generation and transfer
+
+- **Righty: Delayed but Explosive Rotation Strategy**
+  - Keeps the pelvis more closed longer
+  - Delays peak separation
+  - Accelerates more aggressively after FP100
+  - Sustains acceleration deeper into the swing
+
+---
+
+### Tradeoffs and Performance Implications
+
+While the lefty generates early separation and rotational speed, this early opening may limit the ability to continue accelerating later in the swing. This is supported by the lefty’s drop-off in acceleration after FP100+20 and lower distal segment speeds approaching contact.
+
+In contrast, the righty’s more closed pelvis and delayed separation appear to allow for **greater late-phase acceleration**, contributing to higher distal segment velocities and increased bat speed at contact.
+
+---
+
+### Summary
+
+The lefty’s swing is characterized by **early rotation and early separation**, while the righty demonstrates a more **delayed but sustained acceleration pattern**.  
+
+Although early separation can be advantageous for initiating rotation, the righty’s ability to maintain and amplify acceleration later in the swing appears to be more effective for generating bat speed.
 
 ### Overall Conclusion
 The right-handed hitter’s higher bat speed is primarily driven by:
