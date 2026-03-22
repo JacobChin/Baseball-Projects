@@ -246,7 +246,7 @@ All metrics were computed independently for each swing and compared directly to 
   </tr>
 </table>
 
-# Segment Velocities anc Acceleration
+# Segment Velocities and Acceleration
 <table>
   <tr>
     <td align="center"><b>Lefty</b></td>
