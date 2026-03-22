@@ -545,8 +545,6 @@ Being able to track direction of lead leg block would be interesting to see if t
 
 Having access to peak force measurements for these players like IMTP or countermovement jumps will get a better understanding of total capacity of force production over time.
 
-It would be interesting to test these swings with game like velocities and different pitch types to see if the righty can sustain this type of swing in time constrained environments.
-
 Also, knowing the MOI of each bat makes a significant difference in bat speed.
 
 Lastly, being able to test these two swings in a game like environment with time constraints would be interesting to see if the efficiency of the right handed swing will break or not.
