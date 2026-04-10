@@ -19,3 +19,10 @@ Both were hit with the same launch angle off of a machine, but have significantl
 produces significantly more bat speed, and this notebook dives into some of the possibilities behind this, mainly focusing on the
 pelvis and torso velocities, angles, and acceleration along with force production using force plate data. 3D models were created of
 the swing using the biomech data points over time, where you can go frame by frame in each swing.
+
+## Pitch Spin Project:
+Tried to recreate the spin of pitches from the hitter (catcher's) perspective to a certain extent using baseball savant data. 
+Quickly realized that grip and pronation/supination both play a significant role in seam orientation at release, and there isn't 
+public data on this for each pitcher. Nevertheless, I got a pretty realistic 3D model of a baseball and was able to make it spin 
+in the directions that I wanted it too, and maybe with further data on seam orientation I can return to this project and make it
+more realistic.
