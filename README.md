@@ -5,7 +5,7 @@ This repository contains baseball analytics projects focused mainly on aiding in
 I want to really dive into the science of hitting using data and help discover new techniques and be on the cutting edge of the race
 to keep up with the improved pitching MLB has to offer.
 
-## Pitch Tunneling:
+## Pitch Tunneling Project:
 This analysis aims to calculate effectiveness of different pitch combinations and their tunneling. I built a model using all 2024 
 pitches that will calculate the average (tunneling efficiency) of any two pitches in a pitcher's arsenal with relatively the same 
 release point from release to decision window (150ms). This was done by taking the sum of the difference of the x and z distances 
