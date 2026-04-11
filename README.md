@@ -11,7 +11,8 @@ pitches that will calculate the average (tunneling efficiency) of any two pitche
 release point from release to decision window (150ms). This was done by taking the sum of the difference of the x and z distances 
 of these two pitches (how similar do they look at the decision point). I also ranked these by best tunneling efficiency and worst
 for certain pitches to see which pitchers tunneled the best (keep in mind this doesn't account for spin, just purely the location
-of the ball at the decision point).
+of the ball at the decision point). Keep in mind ball flight calculations were limited due to lack of data for seam orientation
+and atmospheric conditions.
 
 ## Swing Biomechanics Project:
 This analysis was taken from Driveline Baseball's OBP Data, which compares two players' swings that are the same height, weight and age.
