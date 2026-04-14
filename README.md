@@ -27,3 +27,10 @@ Quickly realized that grip and pronation/supination both play a significant role
 public data on this for each pitcher. Nevertheless, I got a pretty realistic 3D model of a baseball and was able to make it spin 
 in the directions that I wanted it too, and maybe with further data on seam orientation I can return to this project and make it
 more realistic.
+
+## Optimal Contact Point:
+This project analyzes the relationship between bat–ball contact location and batted ball outcomes using Statcast data retrieved via Python.
+The analysis models horizontal and vertical contact positions relative to the batter and examines their impact on exit velocity. The workflow
+includes data cleaning, feature selection, and exploratory data analysis using Pandas, with visualization techniques including scatter plots,
+binned aggregations, and 2D heatmaps to estimate conditional relationships between contact point and performance. The results highlight spatial
+“sweet spots” associated with higher exit velocities and illustrate how optimal contact depth varies with pitch location.
