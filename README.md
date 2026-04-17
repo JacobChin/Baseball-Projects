@@ -6,13 +6,15 @@ I want to really dive into the science of hitting using data and help discover n
 to keep up with the improved pitching MLB has to offer.
 
 ## Pitch Tunneling Project:
-This analysis aims to calculate effectiveness of different pitch combinations and their tunneling. I built a model using all 2024 
-pitches that will calculate the average (tunneling efficiency) of any two pitches in a pitcher's arsenal with relatively the same 
-release point from release to decision window (150ms). This was done by taking the sum of the difference of the x and z distances 
-of these two pitches (how similar do they look at the decision point). I also ranked these by best tunneling efficiency and worst
-for certain pitches to see which pitchers tunneled the best (keep in mind this doesn't account for spin, just purely the location
-of the ball at the decision point). Keep in mind ball flight calculations were limited due to lack of data for seam orientation
-and atmospheric conditions.
+This analysis aims to quantify the effectiveness of different pitch combinations and their tunneling. I built a model using all 2023 pitches 
+to calculate the average tunneling efficiency of any two pitches in a pitcher’s arsenal, focusing on pairs with similar release points and 
+initial trajectories. Tunneling was measured by comparing the spatial separation of two pitches at the decision window (~150 ms after release), 
+using the combined X and Z distances to capture how similar the pitches appear to the hitter at that moment. I then ranked pitchers based on this
+tunneling efficiency to identify which pitch combinations are most deceptive. In addition to the aggregate model, I developed a physics-based 3D simulation
+that reconstructs individual pitch trajectories from Statcast data and visualizes them from the hitter’s point of view. This allows for direct comparison 
+of specific pitch pairs, showing how they diverge over time and at the decision point. The simulation includes adjustable viewpoints, real-time animation, 
+and strike zone context to better represent what a hitter actually sees. Note that this analysis does not account for seam-shifted wake, spin axis nuances,
+or full aerodynamic modeling due to data limitations.
 
 ## Swing Biomechanics Project:
 This analysis was taken from Driveline Baseball's OBP Data, which compares two players' swings that are the same height, weight and age.
