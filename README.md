@@ -36,3 +36,14 @@ The analysis models horizontal and vertical contact positions relative to the ba
 includes data cleaning, feature selection, and exploratory data analysis using Pandas, with visualization techniques including scatter plots,
 binned aggregations, and 2D heatmaps to estimate conditional relationships between contact point and performance. The results highlight spatial
 “sweet spots” associated with higher exit velocities and illustrate how optimal contact depth varies with pitch location.
+
+## Advanced Spray Chart:
+This project builds an interactive spray chart and leaderboard tool for analyzing hitter contact quality in specific game contexts. The notebook
+combines Statcast batted-ball data with swing metrics and allows filtering by season, count, pitch group or pitch type, strike zone location,
+pitcher handedness, batted-ball result, spray angle range, and minimum batted balls. Zone filters are mirrored by hitter handedness so the same
+location concept can be compared across left-handed and right-handed hitters.
+
+The leaderboard includes metrics such as xBA, xwOBA, EV50, median launch angle, squared-up rate, bat speed, swing length, attack angle, swing path
+tilt, and contact point out in front. It also includes a composite percentile tool that lets multiple metrics be combined into one ranking while
+choosing whether higher or lower values are preferred for each metric. A player lookup feature makes it possible to search for a specific hitter's
+row within the current filtered leaderboard without expanding the visible leaderboard to hundreds of rows.
