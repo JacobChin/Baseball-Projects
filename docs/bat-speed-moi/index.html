@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Statcast bat speed is valuable, but differences in bat moment of inertia, swing geometry and contact context mean the leaderboard may not tell the whole story.">
+  <meta property="og:title" content="Is Bat Speed Missing Something?">
+  <meta property="og:description" content="Why bat moment of inertia and contact context matter when interpreting Statcast bat speed.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://files.catbox.moe/k14k5s.png">
+  <meta name="author" content="Jacob Chin">
+  <title>Is Bat Speed Missing Something?</title>
+  <style>
+    :root { color-scheme: light; --ink: #18252c; --muted: #5b6d75; --navy: #12384a; --blue: #20789c; --pale: #eaf5f8; --line: #d5e0e4; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f5f8f9; color: var(--ink); font: 18px/1.65 Georgia, "Times New Roman", serif; }
+    .site-header { background: var(--navy); color: white; }
+    .site-header-inner { max-width: 960px; margin: auto; padding: 17px 28px; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .brand { color: white; text-decoration: none; font: 700 15px/1.2 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .repo-link { color: #cfe9f3; font: 14px Arial, sans-serif; }
+    article { max-width: 900px; margin: 0 auto; padding: 66px 52px 80px; background: white; box-shadow: 0 2px 28px rgb(23 55 69 / 7%); }
+    h1, h2 { color: var(--navy); line-height: 1.14; }
+    h1 { max-width: 760px; margin: 0 0 16px; font-size: clamp(2.5rem, 7vw, 4.6rem); letter-spacing: -.035em; }
+    h2 { margin: 54px 0 18px; font-size: clamp(1.55rem, 3vw, 2.1rem); }
+    .byline { margin: 0 0 36px; color: var(--muted); font: 15px/1.5 Arial, sans-serif; }
+    article > p:first-of-type { margin: 0 0 32px; padding: 22px 24px; background: var(--pale); border-left: 5px solid var(--blue); font-size: 1.12em; }
+    p { margin: 0 0 20px; }
+    img { display: block; width: min(100%, 1100px); height: auto; margin: 34px auto 12px; border: 1px solid var(--line); }
+    blockquote { margin: 26px 0; padding: 17px 24px; background: var(--pale); border-left: 5px solid var(--blue); font-size: 1.18em; font-weight: 700; }
+    blockquote p { margin: 0; }
+    .source-entry { margin: 10px 0; font: 15px/1.55 Arial, sans-serif; }
+    sup { font: 12px Arial, sans-serif; }
+    a { color: #176b8d; text-underline-offset: 2px; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+    footer { max-width: 900px; margin: 0 auto; padding: 28px; color: var(--muted); text-align: center; font: 14px/1.5 Arial, sans-serif; }
+    @media (max-width: 680px) { .site-header-inner { padding: 14px 20px; } article { padding: 42px 22px 60px; } body { font-size: 17px; } h2 { margin-top: 44px; } }
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="site-header-inner"><a class="brand" href="../">Jacob Chin · Baseball Analytics</a><a class="repo-link" href="https://github.com/JacobChin/Baseball-Projects">View projects on GitHub</a></div></header>
+  <article>
+<h1>Is Bat Speed Missing Something?</h1>
+  <p class="byline">By Jacob Chin · August 2026 · Baseball research</p>
+<p><em>Statcast tells us how fast a bat moved. Without knowing the bat&#39;s moment of inertia, it cannot fully tell us how difficult that bat was to move—or why two equally fast swings may produce different results.</em></p>
+<p>Bat speed is generally accepted as a measure of potential power. That makes sense: all else equal, a faster-moving barrel can produce greater batted-ball speed. The complication is whether every hitter&#39;s reading belongs on the same equipment-neutral scale when hitters may be swinging bats with different lengths, balance points and moments of inertia.</p>
+<p>Two hitters both average 74 mph of bat speed. On a leaderboard, their swings look equivalent.</p>
+<p>But suppose one hitter uses a balanced bat while the other uses a more end-loaded model. The bats might be the same length and weight, yet the second can be harder to accelerate because more of its mass sits farther from the hitter&#39;s hands.</p>
+<p>That does not make bat speed a bad metric. Statcast&#39;s bat-tracking system has given us a valuable view of the swing. But it does mean that bat speed is not purely a measure of the hitter. It is the outcome of a hitter swinging a particular bat.</p>
+<p>Publicly releasing rotational acceleration and time-to-contact metrics would also be extremely useful. They could help distinguish how quickly a hitter builds speed from the final speed reached near contact. That is a separate topic worthy of its own analysis, but those measurements would make the physical demands of different swings much easier to study.</p>
+<h2>What Statcast actually measures</h2>
+<p>Statcast defines bat speed as the speed of the bat&#39;s sweet spot at contact—or at the point where contact would have occurred on a miss. The measurement is taken about six inches from the head of the bat, because different points along a rotating bat travel at different speeds.<sup><a href="#source-1">[1]</a></sup></p>
+<p>That is exactly the number we want if the question is, “How fast was this part of the bat moving?”</p>
+<p>In order to project potential power, analysts often ask a subtly different question: “How much physical bat-speed ability does this hitter have?”</p>
+<p>Those questions overlap, but they are not identical. To understand why, we need to look beyond a bat&#39;s weight.</p>
+<h2>Same weight, different swing weight</h2>
+<p>Moment of inertia, or MOI, describes an object&#39;s resistance to rotational acceleration about a specified axis. What follows is the general idea; readers who do not want to get into the weeds with the formulas can skip ahead to <strong>Research already shows the tradeoff</strong>.</p>
+<p>In simplified form:</p>
+<blockquote>
+<p><strong>I = ∫ r² dm</strong></p>
+</blockquote>
+<p>Here, <em>I</em> is moment of inertia, <em>dm</em> is a small element of the bat&#39;s mass and <em>r</em> is that element&#39;s distance from the chosen rotation axis. The integral sign means adding the contribution of all those small mass elements across the bat. The important part is the squared distance: moving wood farther from the hands can increase MOI substantially even when total bat weight does not change.</p>
+<p>In bat testing, MOI is usually reported about a fixed point in or near the handle - often six inches from the knob. That standardized measurement treats the bat as though it rotates around one stationary point. During a real swing, the hands move through space while the bat also rotates relative to them, so there is no single fixed pivot throughout the motion. The bat&#39;s measured MOI does not change, but the resistance experienced by the hitter also depends on the changing motion of the hands, arms and body.</p>
+<p>The basic rotational relationship is:</p>
+<blockquote>
+<p><strong>τ = I α</strong></p>
+</blockquote>
+<p>Here, <em>τ</em> is torque - the rotational push applied to the bat - <em>I</em> is moment of inertia and <em>α</em> (alpha) is angular acceleration, the rate at which angular velocity changes. If the available torque were held constant, a bat with a larger MOI would accelerate more slowly.</p>
+<p>The rotational kinetic energy of a rigid object also scales with MOI:</p>
+<blockquote>
+<p><strong>K = ½ I ω²</strong></p>
+</blockquote>
+<p>Here, <em>K</em> is rotational kinetic energy, <em>I</em> is moment of inertia and <em>ω</em> (omega) is angular velocity: how quickly the bat rotates, usually measured in radians per second. Statcast instead reports the linear speed of the bat&#39;s sweet spot near contact. That linear speed combines the movement of the hitter&#39;s hands with the bat&#39;s rotation around them, so two hitters can produce the same bat-speed reading through different combinations of hand speed and bat rotation. A single reading at contact cannot tell us how much torque or work produced the swing; that would require the bat&#39;s inertial properties and the motion and acceleration of the bat, hands and body throughout the swing.</p>
+<p>The defensible conclusion is simpler: equal bat speed does not necessarily mean an equal physical task.</p>
+<h2>Research already shows the tradeoff</h2>
+<p>In a field study of amateur slow-pitch softball players, Lloyd Smith, Jeff Broker and Alan Nathan compared bats whose mass and MOI were varied separately. Swing speed was nearly independent of total mass when MOI was held constant. When mass was held constant and MOI changed, swing speed showed a strong relationship with MOI.<sup><a href="#source-2">[2]</a></sup></p>
+<p>The researchers modeled the relationship as:</p>
+<blockquote>
+<p><strong>ω ∝ I⁻ⁿ</strong></p>
+</blockquote>
+<p>Here, <em>ω</em> is angular speed, <em>I</em> is moment of inertia, the proportional-to sign means “is proportional to,” and <em>n</em> describes the hitter&#39;s sensitivity to a change in MOI. The negative exponent means angular speed is expected to decrease as MOI rises. The average <em>n</em> was about 0.25, but individual estimates ranged from 0.08 to 0.37.</p>
+<p>Using 0.25 as an illustration, a 10% increase in MOI predicts a swing-speed decrease of about 2.4%. For a 72-mph swing, that is roughly 1.7 mph.</p>
+<p>That is large enough to matter. It is also not a universal correction factor. The study involved slow-pitch softball players and aluminum bats, not major-league hitters using professional maple bats. A separate study involving college baseball and fast-pitch softball players likewise found that swing speed generally fell as bat MOI increased, while emphasizing that the full motion depends on multiple inertial properties and many degrees of freedom in the body.<sup><a href="#source-3">[3]</a></sup></p>
+<p>That individual response may be a valuable characteristic of its own: <strong>MOI sensitivity</strong>.</p>
+<p>One player may retain nearly all of his speed when swing weight rises. Another may lose speed quickly. The first player might be able to use more effective mass near the barrel without sacrificing much quickness; the second may perform better with a more maneuverable design. Raw bat speed alone cannot reveal the difference.</p>
+<h2>Length complicates the leaderboard, too</h2>
+<p>Bat length introduces another layer.</p>
+<p>For simple rotation, the linear speed of a point on the bat is:</p>
+<blockquote>
+<p><strong>v = ω r</strong></p>
+</blockquote>
+<p>Here, <em>v</em> is the linear speed of the measured point on the bat, <em>ω</em> is angular velocity and <em>r</em> is the point&#39;s distance from the rotation axis. A point farther from the axis travels faster at the same angular velocity. A longer bat can therefore produce more linear speed at a given angular speed. But length also tends to raise MOI, making the bat harder to accelerate. Choking up changes the effective distance from the hands and can change both control and the speed profile.</p>
+<p>Because Statcast measures a point approximately six inches from the head, two hitters using different-length bats are not presenting the tracking system with exactly the same geometry. The reported speed is still a valid measurement. It just should not be treated as if the equipment disappeared.</p>
+<h2>The missing link to exit velocity</h2>
+<p>Bat speed and exit velocity are closely connected, but they are not interchangeable.</p>
+<p>Exit velocity also depends on pitch speed, impact location, collision angle, how squarely the ball is struck, the bat&#39;s effective mass at the contact point, and energy lost to the ball and bat during the collision. Statcast&#39;s “squared-up” metric already recognizes part of this problem: it compares actual exit velocity with the maximum estimated exit velocity available from that combination of swing speed and pitch speed.<sup><a href="#source-4">[4]</a></sup></p>
+<p>But if the public model does not know the physical properties of the individual bat, then some equipment-related variation may still be hiding inside what we attribute to the hitter or to contact quality.</p>
+<p>A simple regression of exit velocity on bat speed could identify players who produce unusually high or low exit velocity for their measured swing speed. Those residuals would <strong>not</strong> be estimates of bat MOI. Too many variables are mixed together. At best, they would be a list of hitters worth studying more closely.</p>
+<h2>Which exit-velocity measure best matches bat speed?</h2>
+<p>Average exit velocity includes mishits and topped balls, while maximum exit velocity can be moved by one unusually hard swing. A top-contact average offers a middle ground: it focuses on a hitter&#39;s best contact without relying on a single maximum. An initial comparison found that the hardest 10% of batted balls fit bat speed more tightly than average EV, EV50 or maximum EV.</p>
+<p>I then added 2024 and tested every cutoff from the hardest 1% through 100%. I required 500 plate appearances in the completed 2024 and 2025 seasons and 400 in the partial 2026 season, leaving 130, 146 and 115 hitters.<sup><a href="#source-7">[7]</a></sup> The three-year mean R² peaked at the hardest 17%, but the curve was broad: every cutoff from 9% through 27% finished within 0.005 R² of the maximum.</p>
+<p><img src="https://files.catbox.moe/1809f3.png" alt="R² produced by every top-contact exit-velocity cutoff from 1% through 100% for 2024, 2025 and 2026."></p>
+<p><em>Figure 1. In the PA-qualified sample, the three-year mean relationship peaks at the hardest 17% of batted balls. The shaded region covers cutoffs within 0.005 R² of the maximum.</em></p>
+<p>I use <strong>EV20</strong> for the remaining analysis. It is a round threshold inside that broad high-performing range, supplies more events per hitter than EV17 or EV12 and gave nearly the same cross-validated fit as the exact 17% winner. It therefore offers a more repeatable sample without materially weakening the model.</p>
+<p>To align the predictor with that outcome, I use each hitter&#39;s <strong>average bat speed on the same EV20 batted-ball events</strong>. This is more directly relevant than either a single maximum bat-speed reading, which can be distorted by an extreme contact point, or Savant&#39;s broader average across all competitive swings. Matching the input and outcome also produced the tightest relationship in every season. Because the events were selected for high EV, however, some of that improvement can arise mechanically; this is a top-contact screening measure, not necessarily the best estimate of a hitter&#39;s general bat-speed ability.</p>
+<p>There is also a coverage limitation. Statcast did not provide a bat-speed value for every selected batted ball. The median share of EV20 events with an available bat-speed reading was 86.8% in 2024, 93.0% in 2025 and 95.2% in 2026. That makes this comparison exploratory rather than definitive.</p>
+<h2>Adding the contact context Statcast does provide</h2>
+<p>The public data still cannot supply the exact impact location along the barrel, batted-ball spin, bat mass or balance, choking up, barrel profile or knob design. It does provide swing length, launch angle and batted-ball direction, along with newer measurements of the bat-ball intercept point relative to the hitter&#39;s body, attack angle and attack direction.</p>
+<p>Swing length stays in the model as a direct control variable. Statcast defines it as the total three-dimensional distance traveled by the bat head from the beginning of tracking—generally about 150 milliseconds before contact—through impact.<sup><a href="#source-9">[9]</a></sup> It is a path-length measurement, not swing time or angular displacement. A longer path may provide more distance over which the bat can gain speed, although it can also reflect longer arms, a longer bat, hand translation or a different swing shape. Including it prevents tracked path-length differences from being ignored; it does not turn public data into a direct measure of rotational acceleration.</p>
+<p>The general idea is simple: begin with the hitter&#39;s bat speed and swing length on his EV20 contact, then ask whether launch angle and spray direction explain any additional EV20 variation. Readers who do not want to get into the regression notation can skip the next formula and continue with Figure 2.</p>
+<p>I added the variables in nested steps rather than assuming every extra input would improve the model. Launch angle enters as both its average and its average squared value, allowing a curved rather than strictly linear relationship. Batted-ball direction is estimated from Statcast&#39;s plotted field coordinates, converted to a spray angle and adjusted for handedness so positive values point toward the hitter&#39;s pull side. Both average pull direction and average squared spray angle enter the final model. I also tested average pitch speed, but excluded it because it slightly reduced player-grouped cross-validated performance.</p>
+<blockquote>
+<p><strong>EV₂₀ = β₀ + β₁BS₂₀ + β₂SL₂₀ + f(LA₂₀) + g(Spray₂₀) + Season + ε</strong></p>
+</blockquote>
+<p>Here, <em>EV₂₀</em> is average exit velocity on the hardest 20% of batted balls; <em>BS₂₀</em> and <em>SL₂₀</em> are average bat speed and swing length on the fully matched EV20 events; <em>LA₂₀</em> is their launch-angle summary; and <em>Spray₂₀</em> is their handedness-adjusted direction summary. <em>β₀</em> is the intercept, while <em>β₁</em> and <em>β₂</em> are the fitted bat-speed and swing-length coefficients. The functions <em>f</em> and <em>g</em> are shorthand for linear and squared angle terms. For each hitter, I calculated both the average angle and the average of the squared event-level angles; the regression then estimated the coefficients that best predicted EV20. The squared terms allow the relationships to bend instead of forcing exit velocity to rise or fall at the same rate across every angle. <em>Season</em> accounts for average differences among years, and <em>ε</em> is the remaining observed-minus-predicted EV20 residual.</p>
+<p>Within this sample, those fitted curves peaked at approximately a 13-degree launch angle and a spray direction 3 to 4 degrees toward the pull side. They are not universal hitting targets: they describe where this model expected the highest top-contact exit velocity, not the angles that maximize overall offensive value.</p>
+<p>This is deliberately called <strong>available contact context</strong>, not complete contact quality. Launch angle and spray direction occur after contact. Conditioning on them can make EV easier to predict, but it can also absorb part of the very collision process the residual is meant to study. I therefore retain the simpler bat-speed-and-swing-length model as the main pre-collision reference and treat the expanded model as a second, more conditional screen.</p>
+<p>Before adding post-contact context, the direct bat-speed-plus-swing-length model reached fitted R² = 0.869 and player-grouped cross-validated R² = 0.863, compared with 0.861 for bat speed alone. The full model reached fitted R² = 0.881 and player-grouped cross-validated R² = 0.871. Its cross-fitted R² was 0.876 in 2024, 0.851 in 2025 and 0.884 in 2026.</p>
+<p><img src="https://files.catbox.moe/k14k5s.png" alt="Year-by-year observed versus cross-fitted predicted EV20 from the full model using matched bat speed, swing length, launch-angle shape and spray direction."></p>
+<p><em>Figure 2. Year-by-year full-model results. Orange and blue mark the three largest positive and negative cross-fitted residuals in each season. The pooled player-grouped cross-validated R² was 0.871.</em></p>
+<p><img src="https://files.catbox.moe/c50k35.png" alt="Comparison of nested EV20 models using bat speed, swing length, launch angle and spray direction."></p>
+<p><em>Figure 3. Added contact context improved the EV20 model modestly. The full model reached fitted R² = 0.881 and player-grouped cross-validated R² = 0.871. Mean pairwise residual correlation rose from 0.636 for bat speed plus swing length to 0.657 for the full model.</em></p>
+<p>Within the same 391-player-season sample, adding launch-angle shape raised grouped-CV R² from 0.862 to 0.868, and adding spray direction raised it to 0.871. Mean absolute prediction error fell from 0.865 mph in the core model to 0.816 mph in the full model. That is a real but modest improvement. Residual consistency also improved, though it was not higher in every individual season pair.</p>
+<p>I also tested intercept point relative to the hitter&#39;s body, attack angle and attack direction on the same sample. Across 100 repeated player-grouped fold assignments, neither intercept point nor attack angle improved out-of-sample R²; attack direction produced only a roughly +0.0004 average change and was inconsistent by season. Adding all three together reduced grouped-CV R², so I left them out of the final model.</p>
+<h2>A more stable multi-year outlier screen</h2>
+<p>Public bat specifications are not available consistently enough to test whether an individual residual came from bat MOI, balance or knob design. Rather than attach an equipment story to incomplete evidence, I use the model only to ask a narrower question: <strong>which hitters repeatedly produced more or less top-contact exit velocity than the model expected?</strong></p>
+<p>For the combined view, I used the expanded contact-context model and generated cross-fitted predictions while keeping all seasons from the same hitter out of the training fold together. I then retained the 122 hitters who reached the playing-time threshold in at least two seasons and averaged each hitter&#39;s observed and predicted values across his qualifying seasons, weighting by the number of fully matched EV20 events. The highlighted players also had to finish on the same side of the prediction line in every qualifying season.</p>
+<p><img src="https://files.catbox.moe/80d8bg.png" alt="Combined 2024-2026 observed versus cross-fitted predicted EV20 from the expanded contact-context model, with repeatable positive and negative residual hitters highlighted."></p>
+<p><em>Figure 4. Combined 2024-2026 cross-fitted EV20 contact-context view for hitters with at least two qualifying seasons. The player-average R² was 0.893. The larger value partly reflects the reduction of random noise from averaging seasons, so it should not be compared directly with the player-season model scores.</em></p>
+<p>Rafael Devers, Yandy Díaz and Shohei Ohtani produced the three largest consistently positive residuals among hitters qualified in all three seasons, averaging approximately +2.56, +2.11 and +1.83 mph. Gunnar Henderson, Nico Hoerner and Steven Kwan were the corresponding consistently negative group at approximately -1.61, -1.13 and -1.03 mph. These are more stable candidates for further study than the extremes from any single season. They are still <strong>not MOI estimates</strong>, and I do not assign them to particular bat designs without reliable bat measurements.</p>
+<p>Devers is the clearest constant outlier in the analysis. The simpler bat-speed-and-swing-length model placed him approximately +2.21 mph above expectation in 2024, +2.62 in 2025 and +3.07 in 2026. After adding launch-angle shape and spray direction, he remained approximately +2.10, +2.59 and +2.99 mph above expectation. His weighted three-year residual was +2.56 mph in the expanded model, the largest consistently positive result among three-season qualifiers. That persistence makes Devers an especially strong candidate for closer study: the result does not disappear when more observable contact context is added. It still cannot tell us whether the explanation is bat construction, unmeasured impact precision, hitter-specific collision mechanics or some combination of those factors.</p>
+<p>These top-contact metrics are promising screening statistics for this question, not direct measurements of bat efficiency, acceleration or MOI. Their residuals still combine pitch speed, contact point, collision angle, launch direction, swing decisions, mechanics, bat properties and measurement noise. The finding is better framed as: <strong>the hardest roughly 10% to 20% of a hitter&#39;s contact appears to isolate repeatable top-end batted-ball speed, while including swing length prevents tracked path differences from being ignored.</strong></p>
+<p>The expanded model uses player-season averages of the available context variables. A stronger next step would work pitch by pitch, model nonlinear interactions, and separate pre-contact variables from post-contact outcomes. Even then, it would generate hypotheses—not identify a bat&#39;s inertial properties from Statcast alone.</p>
+<p>To answer the question directly, we need to measure the bats.</p>
+<h2>What the ideal study would look like</h2>
+<p>The cleanest experiment would give hitters a set of professional-style wood bats with tightly matched length, total mass, handle dimensions and barrel diameter, while deliberately varying MOI. Because natural wood can differ even when two bats share the same external shape, every bat&#39;s actual inertial and collision properties would need to be measured.</p>
+<p>Hitters would face randomized bat conditions and game-representative pitches while researchers record:</p>
+<ul>
+<li>bat speed and angular velocity;</li>
+<li>angular acceleration and time to contact;</li>
+<li>hand and body kinematics;</li>
+<li>impact location;</li>
+<li>exit velocity and launch direction;</li>
+<li>swing decisions, misses and contact consistency.</li>
+</ul>
+<p>For each hitter, researchers could estimate both the speed cost of added MOI and the batted-ball benefit, if any. That turns bat fitting into an optimization problem:</p>
+<blockquote>
+<p>Which bat produces the best combination of obtainable speed, collision effectiveness, contact accuracy and adjustability for this hitter?</p>
+</blockquote>
+<p>That is a better question than simply asking which bat produces the highest bat-speed reading.</p>
+<h2>Torpedo bats make the issue impossible to ignore</h2>
+<p>The attention around torpedo bats has pushed mass distribution into the mainstream. These bats remove wood from near the tip and place more of it closer to the hitter&#39;s typical impact region.<sup><a href="#source-5">[5]</a></sup></p>
+<p>But “torpedo” does not automatically mean lighter swing weight or greater power. A designer can use the redistributed wood to lower MOI, enlarge the barrel near the preferred contact point, preserve MOI, or strike some compromise among those goals.</p>
+<p>A 2026 experimental study by Alan Nathan, Lloyd Smith and Daniel Russell makes that nuance especially clear. The researchers tested maple standard and torpedo bats based on models used by the same MLB player. Despite visibly different barrel shapes, the bats had broadly similar length, weight and MOI. The peak collision efficiency was similar, but its location shifted; one torpedo specimen also produced a modestly wider high-performance region. The study further found meaningful variation between two torpedo bats with the same shape, a reminder that wood itself is not perfectly uniform.<sup><a href="#source-6">[6]</a></sup></p>
+<p>In other words, the torpedo bat is not one fixed physics result. It is a design strategy. Its value depends on the final inertial properties, the bat&#39;s vibrational behavior, where the hitter actually makes contact and how that hitter responds to the design.</p>
+<p>Puck knobs belong in the same conversation because they alter mass distribution from the other end of the bat. A puck knob is a thick, cylindrical knob that places additional mass below the hands, shifting the balance point toward the grip and creating a counterbalanced feel. That can make a bat feel more maneuverable even when the finished bat is longer or heavier. Juan Soto&#39;s 2026 switch is a useful example: he described the puck-knob model as quicker and easier to move, and his measured swing length shortened, but his average bat speed actually declined after the change. MLB&#39;s analysis correctly cautioned that equipment effects are difficult to isolate from the swing changes they may encourage.<sup><a href="#source-8">[8]</a></sup></p>
+<p>The puck knob therefore reinforces the torpedo-bat lesson. “Feels lighter,” “swings shorter” and “moves faster” are related ideas, but they are not interchangeable measurements. Knob shape, barrel shape, total mass and MOI can be adjusted together, and the hitter&#39;s response determines the final swing.</p>
+<h2>Bat speed is valuable—just incomplete</h2>
+<p>None of this argues against Statcast bat speed. If anything, the new metric has made this question possible. We can now measure the speed side of the hitter–bat system at scale, compare intent, identify changes over time and connect swing speed to contact and outcomes. We should simply be precise about what the number means.</p>
+<p>Bat speed tells us how fast a particular point on the bat was moving. It does not, by itself, tell us the hitter&#39;s torque, the energy required to create the swing, the maneuverability of the bat or the collision performance available at different impact locations. Two hitters can both swing 74 mph and still be doing meaningfully different things.</p>
+<p>The next leap in public hitting analysis may not require another camera. It may require a better description of the object already in the hitter&#39;s hands: length, mass, center of mass, moment of inertia, grip position and barrel geometry. We know how fast the bat moved. The next question is how difficult that bat was to move—and whether it was the right bat for that hitter.</p>
+<hr>
+<h2>Sources</h2>
+<p id="source-1" class="source-entry"><strong>[1]</strong> MLB, <a href="https://www.mlb.com/news/what-you-need-to-know-about-statcast-bat-tracking">“Everything to know about Statcast&#39;s new bat-tracking data”</a>.</p>
+<p id="source-2" class="source-entry"><strong>[2]</strong> Lloyd Smith, Jeff Broker and Alan Nathan, <a href="https://baseball.physics.illinois.edu/SwingSpeed.pdf">“A Study of Softball Player Swing Speed”</a>.</p>
+<p id="source-3" class="source-entry"><strong>[3]</strong> Keith Koenig et al., <a href="https://people.stfx.ca/smackenz/Courses/DirectedStudy/Articles/Koenig%202004%20The%20influence%20of%20moment%20of%20inertia%20on%20baseball%20and%20softball%20bat%20swing%20speed.pdf">“The Influence of Moment of Inertia on Baseball/Softball Bat Swing Speed”</a>, <em>Sports Engineering</em> 7 (2004): 105–117.</p>
+<p id="source-4" class="source-entry"><strong>[4]</strong> MLB, <a href="https://www.mlb.com/glossary/statcast/squared-up">“Squared-up Rate”</a>.</p>
+<p id="source-5" class="source-entry"><strong>[5]</strong> MLB, <a href="https://www.mlb.com/news/torpedo-bats-pros-cons-in-mlb">“‘Torpedo’ bat presents compromises for MLB hitters”</a>.</p>
+<p id="source-6" class="source-entry"><strong>[6]</strong> Alan Nathan, Lloyd Smith and Daniel Russell, <a href="https://baseball.physics.illinois.edu/ISEA2026-Torpedo-v7.pdf">“Studies of the Torpedo Bat”</a>, <em>The Engineering of Sport 16</em> (2026).</p>
+<p id="source-7" class="source-entry"><strong>[7]</strong> Baseball Savant, <a href="https://baseballsavant.mlb.com/statcast_search">Statcast Search</a> and <a href="https://baseballsavant.mlb.com/leaderboard/bat-tracking">Bat Tracking Leaderboard</a>, plus the official MLB Stats API for plate-appearance totals. Data retrieved through August 7, 2026.</p>
+<p id="source-8" class="source-entry"><strong>[8]</strong> Anthony DiComo, MLB.com, <a href="https://www.mlb.com/news/juan-soto-switches-to-hockey-puck-knob-bat">“Why Juan Soto switched to a hockey puck knob bat”</a>, July 22, 2026.</p>
+<p id="source-9" class="source-entry"><strong>[9]</strong> MLB, <a href="https://www.mlb.com/glossary/statcast/swing-length">“Swing Length”</a>.</p>
+</article>
+  <footer>© 2026 Jacob Chin · Independent baseball research</footer>
+</body>
+</html>
+
