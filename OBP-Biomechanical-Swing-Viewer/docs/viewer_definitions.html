@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Swing Viewer Definitions</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:32px auto;max-width:960px;color:#172033;line-height:1.55;background:#f8fafc}
+main{background:#fff;border:1px solid #d7deea;border-radius:8px;padding:28px}
+h1{margin-top:0}h2{margin-top:28px}dt{font-weight:700;margin-top:16px}dd{margin:4px 0 0 0;color:#40516a}.muted{color:#64748b}.pill{display:inline-block;background:#eef4ff;color:#1d4ed8;border-radius:999px;padding:2px 8px;font-size:12px;font-weight:700}ul{margin-top:6px;color:#40516a}
+</style>
+</head>
+<body><main>
+<h1>Swing Viewer Definitions</h1>
+<p class='muted'>These definitions described the current attack-angle swing viewers. Times were shown relative to contact, where negative values occurred before contact and 0.0 ms represented contact.</p>
+
+<h2>Event Times</h2>
+<dl>
+<dt>Force climb start</dt><dd>The estimated start of the lead-leg force rise. The force curve was smoothed, then the algorithm looked for the final quiet baseline or local minimum before FP100. Climb start was marked once force rose 5 percentage points of bodyweight above that local baseline. This was intended to capture the start of the meaningful force climb rather than early toe-touch noise.</dd>
+<dt>FP10</dt><dd>The lead force crossing 10% bodyweight. Upward crossings after the late pre-contact cutoff were ignored so that small changes near/after contact did not become the selected FP10.</dd>
+<dt>FP100</dt><dd>The lead force crossing 100% bodyweight. The selected event was the relevant upward crossing before the late pre-contact cutoff, rather than an unrelated post-contact crossing.</dd>
+<dt>Peak force</dt><dd>The selected maximum lead force for the swing after force quality-control decisions. Negative pre-contact force baselines were handled by reporting corrected force range when needed, and known unusable force swings were excluded from force-specific interpretation.</dd>
+<dt>Pelvis onset</dt><dd>The pelvis onset was based on the pelvis 3D angular velocity magnitude. The max pelvis velocity reference was found, and onset was marked at the latest upward crossing of 20% of that max velocity that led into the selected velocity ramp.</dd>
+<dt>Torso onset</dt><dd>The torso onset used the same velocity-threshold concept as the pelvis: 3D torso angular velocity magnitude was smoothed, the max velocity reference was identified, and onset was marked at the 20% upward crossing into that ramp.</dd>
+<dt>Lead hand onset</dt><dd>The lead hand onset used 3D lead-hand angular velocity magnitude before contact. The max pre-contact lead-hand velocity reference was identified, and onset was marked at the 20% upward crossing into that selected hand-speed ramp.</dd>
+<dt>Pelvis, torso, lead hand max velocity</dt><dd>These events marked the frames where each segment reached the max angular velocity reference used by the 20% onset calculation.</dd>
+<dt>Contact</dt><dd>The OBP contact event for the swing.</dd>
+</dl>
+
+<h2>Trace Readouts</h2>
+<dl>
+<dt>AA <span class='pill'>Attack Angle</span></dt><dd>The vertical direction of the sweet spot's velocity relative to the ground. A value of 0 degrees meant the sweet spot moved parallel to the ground; positive values meant the sweet spot moved upward. The viewer used the timing-corrected marker-derived sweet-spot velocity.</dd>
+<dt>AD <span class='pill'>Attack Direction</span></dt><dd>The horizontal direction of the sweet spot's velocity. Pull-side direction was positive, opposite-field direction was negative, and values near 0 degrees represented a middle-field direction.</dd>
+<dt>Bat Speed</dt><dd>The current sweet-spot speed in mph at the displayed frame. The percentage was relative to that swing's max sweet-spot speed inside the attack-angle swing window. The gate was 30% of that max speed.</dd>
+<dt>Attack-angle swing window</dt><dd>The attack-angle window started at the lead hand onset. It ended at the latest upward crossing of +55 degrees pull-side attack direction after lead hand onset. The +55 degree endpoint was used as a practical boundary for the part of the swing that could still plausibly do damage, rather than including the finish. If +55 degrees was not reached, the fallback endpoint was 100 ms after contact.</dd>
+<dt>Ideal attack-angle zone</dt><dd>The red ribbon appeared when all of the following were true: attack angle was inside the selected range, sweet-spot speed passed the 30% speed gate, the frame was inside the lead-hand-onset-to-55-degree attack-direction swing window, and the zone segment was the contact-relevant segment nearest contact.</dd>
+<dt>Ideal zone time</dt><dd>Total milliseconds spent in the currently selected ideal attack-angle range after the same swing-window and speed-gate filters were applied. The viewer also reported the ideal-zone COM-to-barrel out-front range for that selected segment. In the OBP coordinate system, the pitcher direction is +X, so this used sweet-spot X minus center-of-mass X and converted the result to inches. Positive values meant the barrel was in front of the COM toward the pitcher; negative values meant it was behind the COM toward the catcher. This was a dynamic, frame-by-frame COM reference.</dd>
+<dt>Optimal range occurred during contact</dt><dd>A Yes/No marker indicating whether the frame closest to contact satisfied the same ideal-zone conditions used for the ribbon.</dd>
+<dt>Segment angular velocity</dt><dd>The pelvis, torso, and lead hand trace readouts showed current 3D angular velocity magnitude in degrees per second and the percentage of that segment's max reference velocity.</dd>
+</dl>
+
+<h2>Contact Metrics</h2>
+<p class='muted'>The contact metrics table reported values at the contact frame.</p>
+<dl>
+<dt>OBP validation fields</dt><dd>OBP provided official contact bat speed and contact attack angle fields. The viewer's marker-derived bat speed and attack angle were validated against those OBP contact fields.</dd>
+<dt>Frame-by-frame marker calculations</dt><dd>Bat speed and attack angle used the same contact-level concepts as the OBP variables, but the viewer recomputed sweet-spot velocity from marker positions so those values could be shown across the full swing path. Small differences from OBP's processed contact values were expected.</dd>
+<dt>Project-derived contact metrics</dt><dd>Attack direction, swing length, and swing path tilt were project-derived metrics because matching OBP/Blast reference fields were not available.</dd>
+<dt>Swing length</dt><dd>Swing length was measured as sweet-spot path length from lead hand onset to contact and was displayed in feet.</dd>
+<dt>Swing path tilt</dt><dd>Swing path tilt followed the Statcast-style concept of fitting the swing plane from the sweet-spot path over the 40 ms before contact and reporting that plane's angle relative to the ground.</dd>
+<dt>Out Front (Contact COM)</dt><dd>This used the sweet spot at contact minus the hitter's COM at contact in OBP +X. It behaved like a dynamic extension/depth-at-impact measure.</dd>
+<dt>Out Front (Rear-most COM)</dt><dd>This used the same contact sweet-spot position but compared it with the hitter's furthest catcher-side COM position from 500 ms before contact through contact. In OBP coordinates, +X pointed toward the pitcher, so the rear-most COM was the lowest COM X value in that window. This normalized hitters who were still drifting backward or already moving forward at exactly -500 ms.</dd>
+<dt>Coordinate note</dt><dd>Baseball Savant labels its mound-to-plate CSV direction as Y, while OBP labels the pitcher direction as X, so the axis names were not directly interchangeable.</dd>
+<dt>Interpretation note</dt><dd>Neither out-front metric represented total arm extension on inside/outside pitch locations; both measured only mound-direction depth.</dd>
+</dl>
+
+<h2>Viewer Controls</h2>
+<p>The Ideal AA boxes changed the attack-angle range shown by the ribbon and zone-time summary inside the open HTML file. The saved dataset metrics remained based on the default 5-20 degree range unless the Python analysis was rerun with different constants.</p>
+<p>The percentage shown beside ideal zone time represented ideal-zone time divided by total attack-angle swing-window time.</p>
+</main></body></html>

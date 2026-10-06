@@ -1,0 +1,3 @@
+computed_col,n,pearson_r_vs_obp,mean_diff_computed_minus_obp,median_abs_diff,rmse_diff
+attack_angle_contact_computed_deg,677,0.9969423703209574,0.07578729180895574,0.25818740087945,0.4879909155978663
+attack_angle_contact_xz_deg,677,0.9969423703209574,0.07578729180895574,0.25818740087945,0.4879909155978663
