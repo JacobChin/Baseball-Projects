@@ -2,9 +2,9 @@
 
 ## Summary
 
-This project uses Driveline Baseball's OpenBiomechanics Project (OBP) hitting dataset to study how hitters move through the attack-angle window around contact. The main output is an interactive swing viewer that combines motion-capture landmarks, force events, segment-onset timing, bat speed, attack angle, attack direction, and contact-depth measurements into one frame-by-frame visualization.
+This project uses Driveline Baseball's OpenBiomechanics Project (OBP) hitting dataset to build a comprehensive frame-by-frame swing analysis viewer. The main output combines motion-capture landmarks, force events, segment-onset timing, segment velocities, bat speed, attack angle, attack direction, contact depth, swing length, and swing path tilt into one visualization.
 
-The viewer highlights the part of the barrel path where the sweet spot is moving through an adjustable ideal attack-angle range. The default range is 5-20 degrees, matching the common Statcast-style ideal attack-angle window. The red barrel ribbon is clipped with sub-frame interpolation so the visual ribbon begins and ends at the estimated attack-angle boundary crossing, even when the exact 5 or 20 degree point falls between sampled frames.
+The viewer highlights the part of the barrel path where the sweet spot is moving through an adjustable ideal attack-angle range while keeping the force, onset, velocity, and contact landmarks visible. The default range is 5-20 degrees, matching the common Statcast-style ideal attack-angle window. The red barrel ribbon is clipped with sub-frame interpolation so the visual ribbon begins and ends at the estimated attack-angle boundary crossing, even when the exact 5 or 20 degree point falls between sampled frames.
 
 ## Project Goals
 
@@ -13,7 +13,7 @@ The viewer highlights the part of the barrel path where the sweet spot is moving
 - Identify how long each hitter spends in an ideal attack-angle window.
 - Measure where that ideal zone occurs relative to the hitter's center of mass.
 - Compare marker-derived contact metrics against OBP-provided contact bat speed and attack angle fields.
-- Preserve force and segment-onset landmarks so swing-path metrics can be interpreted alongside lower-body timing.
+- Preserve force, segment-onset, and max-velocity landmarks so swing-path metrics can be interpreted alongside lower-body timing.
 
 ## Dataset Context
 
@@ -104,23 +104,52 @@ Marker-derived contact attack angle validated strongly against OBP's attack angl
 
 See:
 
-- [Attack angle contact comparison](Figures/attack_angle_contact_comparison.png)
+- [Attack angle contact comparison](Figures/bat_path/attack_angle_contact_comparison.png)
 - [Marker AA vs OBP contact AA diagnostic](Figures/diagnostics/marker_aa_vs_attack_angle_contact_x.png)
 
 ## Figures
 
-Selected figures are included in [Figures](Figures):
+Selected figures are included in [Figures](Figures). The files in this folder were refreshed from the latest working outputs after the viewer updates, so they match the current segment-onset, force, and bat-path logic.
 
-- [Attack zone time distribution](Figures/attack_zone_time_distribution.png)
-- [Contact metrics distributions](Figures/contact_metrics_distributions.png)
-- [Contact out-front distribution](Figures/contact_out_front_distribution.png)
-- [Top hitters by attack zone time](Figures/top_hitters_attack_zone_time.png)
-- [Attack angle contact comparison](Figures/attack_angle_contact_comparison.png)
+### Bat Path and Contact Metrics
+
+- [Attack zone time distribution](Figures/bat_path/attack_zone_time_distribution.png)
+- [Ideal-zone COM-to-barrel range distribution](Figures/bat_path/ideal_zone_com_to_barrel_range_distribution.png)
+- [Contact metrics distributions](Figures/bat_path/contact_metrics_distributions.png)
+- [Contact out-front distribution](Figures/bat_path/contact_out_front_distribution.png)
+- [Top hitters by attack zone time](Figures/bat_path/top_hitters_attack_zone_time.png)
+- [Attack angle contact comparison](Figures/bat_path/attack_angle_contact_comparison.png)
+
+### Force Timing
+
+- [Average smoothed lead force across swings](Figures/force/aggregate_smoothed_lead_force_all_swings.png)
+- [Force timing distributions](Figures/force/force_timing_distributions.png)
+- [Force climb-start distribution](Figures/force/force_climb_start_distribution.png)
+- [Force climb start to peak force timing](Figures/force/force_climb_start_to_peak_force_distribution.png)
+- [Corrected peak force distributions](Figures/force/peak_force_corrected_distributions.png)
+
+### Segment Onsets and Velocities
+
+- [Primary onset distributions](Figures/onsets_velocity/primary_onset_distributions.png)
+- [Segment onset overlay](Figures/onsets_velocity/segment_onset_distributions_overlay.png)
+- [Onset order counts](Figures/onsets_velocity/primary_onset_order_counts.png)
+- [Average force with onset landmarks](Figures/onsets_velocity/average_force_with_onset_landmarks.png)
+- [Pelvis smoothed velocity with force events](Figures/onsets_velocity/pelvis_smoothed_velocity_with_force_events.png)
+- [Torso average angular velocity with force markers](Figures/onsets_velocity/torso_average_angular_velocity_with_force_markers.png)
+- [Lead hand average angular velocity with force markers](Figures/onsets_velocity/lead_hand_average_angular_velocity_with_force_markers.png)
+- [Lead arm average angular velocity with force markers](Figures/onsets_velocity/lead_arm_average_angular_velocity_with_force_markers.png)
+
+### Relationships
+
+- [Bat speed vs initiation spread](Figures/relationships/bat_speed_vs_initiation_spread.png)
+- [Swing length vs initiation spread](Figures/relationships/swing_length_vs_initiation_spread.png)
+- [Attack angle vs initiation spread](Figures/relationships/attack_angle_vs_initiation_spread.png)
+- [Relationship R2 summary](Figures/relationships/initiation_spread_relationship_r2_summary.png)
 
 ## Project Structure
 
 ```text
-OBP-Attack-Angle-Swing-Viewer/
+OBP-Biomechanical-Swing-Viewer/
   README.md
   requirements.txt
   scripts/
@@ -137,7 +166,10 @@ OBP-Attack-Angle-Swing-Viewer/
     attack_angle_contact_comparison_summary.csv
     ...
   Figures/
-    *.png
+    bat_path/*.png
+    force/*.png
+    onsets_velocity/*.png
+    relationships/*.png
     diagnostics/*.png
   Viewer-Examples/
     index.html
@@ -197,4 +229,7 @@ A few small processed CSVs are included so the analysis is easier to inspect wit
 - `outputs/initiation_analysis/velocity20_primary_model/velocity20_primary_onset_rows.csv`
 
 The full raw marker, force plate, and joint-velocity archives are intentionally not included because they are large and should be downloaded from the OBP source data when regenerating everything from scratch.
+
+
+
 
