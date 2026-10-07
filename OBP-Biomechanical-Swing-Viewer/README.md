@@ -23,16 +23,18 @@ Raw OBP data is not included in this repository. To regenerate the full analysis
 
 ## Included Example Viewer
 
-Open one of these standalone HTML files in a browser:
+GitHub shows .html files as source code. Use these rendered RawGitHack links to open the actual interactive viewer pages:
 
-- [Viewer index](Viewer-Examples/index.html)
-- [Example 180_1](Viewer-Examples/180_1.html)
-- [Example 398_4](Viewer-Examples/398_4.html)
-- [Example 282_1](Viewer-Examples/282_1.html)
-- [Example 24_3](Viewer-Examples/24_3.html)
-- [Example 181_8](Viewer-Examples/181_8.html)
+- [Rendered viewer index](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/index.html)
+- [Rendered example 180_1](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/180_1.html)
+- [Rendered example 398_4](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/398_4.html)
+- [Rendered example 282_1](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/282_1.html)
+- [Rendered example 24_3](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/24_3.html)
+- [Rendered example 181_8](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/181_8.html)
+- [Rendered viewer definitions](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/definitions.html)
+- [Rendered project metric definitions](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/docs/viewer_definitions.html)
 
-The HTML files are self-contained examples, so they can be opened without running Python.
+The source HTML files live in [Viewer-Examples](Viewer-Examples), but clicking those files directly on GitHub will show the code instead of the rendered viewer.
 
 ## Viewer Features
 
@@ -51,7 +53,7 @@ The swing viewer includes:
 
 A fuller definitions page is included here:
 
-- [Viewer metric definitions](docs/viewer_definitions.html)
+- [Viewer metric definitions](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/docs/viewer_definitions.html)
 
 Important definitions:
 
@@ -229,7 +231,4 @@ A few small processed CSVs are included so the analysis is easier to inspect wit
 - `outputs/initiation_analysis/velocity20_primary_model/velocity20_primary_onset_rows.csv`
 
 The full raw marker, force plate, and joint-velocity archives are intentionally not included because they are large and should be downloaded from the OBP source data when regenerating everything from scratch.
-
-
-
 
