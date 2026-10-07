@@ -126,9 +126,6 @@ Selected figures are included in [Figures](Figures). The files in this folder we
 
 - [Average smoothed lead force across swings](Figures/force/aggregate_smoothed_lead_force_all_swings.png)
 - [Force timing distributions](Figures/force/force_timing_distributions.png)
-- [Force climb-start distribution](Figures/force/force_climb_start_distribution.png)
-- [Force climb start to peak force timing](Figures/force/force_climb_start_to_peak_force_distribution.png)
-- [Corrected peak force distributions](Figures/force/peak_force_corrected_distributions.png)
 
 ### Segment Onsets and Velocities
 
@@ -140,13 +137,6 @@ Selected figures are included in [Figures](Figures). The files in this folder we
 - [Torso average angular velocity with force markers](Figures/onsets_velocity/torso_average_angular_velocity_with_force_markers.png)
 - [Lead hand average angular velocity with force markers](Figures/onsets_velocity/lead_hand_average_angular_velocity_with_force_markers.png)
 - [Lead arm average angular velocity with force markers](Figures/onsets_velocity/lead_arm_average_angular_velocity_with_force_markers.png)
-
-### Relationships
-
-- [Bat speed vs initiation spread](Figures/relationships/bat_speed_vs_initiation_spread.png)
-- [Swing length vs initiation spread](Figures/relationships/swing_length_vs_initiation_spread.png)
-- [Attack angle vs initiation spread](Figures/relationships/attack_angle_vs_initiation_spread.png)
-- [Relationship R2 summary](Figures/relationships/initiation_spread_relationship_r2_summary.png)
 
 ## Project Structure
 
@@ -171,7 +161,6 @@ OBP-Biomechanical-Swing-Viewer/
     bat_path/*.png
     force/*.png
     onsets_velocity/*.png
-    relationships/*.png
     diagnostics/*.png
   Viewer-Examples/
     index.html
