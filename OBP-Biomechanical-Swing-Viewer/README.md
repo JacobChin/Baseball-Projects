@@ -133,7 +133,7 @@ Selected figures are included in [Figures](Figures). The files in this folder we
 - [Segment onset overlay](Figures/onsets_velocity/segment_onset_distributions_overlay.png)
 - [Onset order counts](Figures/onsets_velocity/primary_onset_order_counts.png)
 - [Average force with onset landmarks](Figures/onsets_velocity/average_force_with_onset_landmarks.png)
-- [Pelvis smoothed velocity with force events](Figures/onsets_velocity/pelvis_smoothed_velocity_with_force_events.png)
+- [Pelvis average angular velocity](Figures/onsets_velocity/pelvis_smoothed_velocity_with_force_events.png)
 - [Torso average angular velocity with force markers](Figures/onsets_velocity/torso_average_angular_velocity_with_force_markers.png)
 - [Lead hand average angular velocity with force markers](Figures/onsets_velocity/lead_hand_average_angular_velocity_with_force_markers.png)
 - [Lead arm average angular velocity with force markers](Figures/onsets_velocity/lead_arm_average_angular_velocity_with_force_markers.png)
