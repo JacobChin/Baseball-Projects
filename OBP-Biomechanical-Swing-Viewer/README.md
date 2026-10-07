@@ -106,7 +106,7 @@ Marker-derived contact attack angle validated strongly against OBP's attack angl
 
 See:
 
-- [Attack angle contact comparison](Figures/bat_path/attack_angle_contact_comparison.png)
+- [Attack angle contact comparison](Figures/diagnostics/attack_angle_contact_comparison.png)
 - [Marker AA vs OBP contact AA diagnostic](Figures/diagnostics/marker_aa_vs_attack_angle_contact_x.png)
 
 ## Figures
@@ -115,12 +115,11 @@ Selected figures are included in [Figures](Figures). The files in this folder we
 
 ### Bat Path and Contact Metrics
 
-- [Attack zone time distribution](Figures/bat_path/attack_zone_time_distribution.png)
-- [Ideal-zone COM-to-barrel range distribution](Figures/bat_path/ideal_zone_com_to_barrel_range_distribution.png)
+- [Attack-angle zone distributions](Figures/bat_path/attack_angle_zone_distributions.png)
+
 - [Contact metrics distributions](Figures/bat_path/contact_metrics_distributions.png)
 - [Contact out-front distribution](Figures/bat_path/contact_out_front_distribution.png)
 - [Top hitters by attack zone time](Figures/bat_path/top_hitters_attack_zone_time.png)
-- [Attack angle contact comparison](Figures/bat_path/attack_angle_contact_comparison.png)
 
 ### Force Timing
 
