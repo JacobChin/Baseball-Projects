@@ -177,31 +177,44 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
         part = out[out["bb_type"].eq(bb_type)]
         if part.empty:
             continue
-        hover_columns = pd.DataFrame({
-            "batter_name": part["batter_name"].astype(str),
-            "balls": part["balls"],
-            "strikes": part["strikes"],
-            "pitch_name": part["pitch_name"].astype(str),
-            "zone": part["zone"],
-            "launch_speed": part["launch_speed"],
-            "launch_angle": part["launch_angle"],
-            "distance": part["hit_distance_sc"],
-            "xba": part["estimated_ba_using_speedangle"],
-            "xwoba": part["estimated_woba_using_speedangle"],
-            "squared_up_pct": part["squared_up_pct"] * 100,
-            "bat_speed": part["bat_speed"],
-            "swing_length": part["swing_length"],
-        })
-        custom = hover_columns.to_numpy(dtype=object)
+        def fmt_hover(value, decimals=1):
+            if pd.isna(value):
+                return "N/A"
+            return f"{float(value):.{decimals}f}"
+
+        hover_text = []
+        for _, row in part.iterrows():
+            squared_up = "N/A" if pd.isna(row["is_squared_up"]) else ("Yes" if bool(row["is_squared_up"]) else "No")
+            event = str(row["events"]).replace("_", " ").title() if pd.notna(row["events"]) else "N/A"
+            season = str(int(row["game_year"])) if pd.notna(row["game_year"]) else "N/A"
+            count = f"{int(row['balls'])}-{int(row['strikes'])}" if pd.notna(row["balls"]) and pd.notna(row["strikes"]) else "N/A"
+            zone = str(int(row["zone"])) if pd.notna(row["zone"]) else "N/A"
+            hover_text.append(
+                f"<b>{row['batter_name']}</b><br>"
+                f"Count: {count}<br>Pitch: {row['pitch_name']}<br>Zone: {zone}<br>"
+                f"xBA: {fmt_hover(row['estimated_ba_using_speedangle'], 3)}<br>"
+                f"xWOBA: {fmt_hover(row['estimated_woba_using_speedangle'], 3)}<br>"
+                f"EV: {fmt_hover(row['launch_speed'])} mph<br>LA: {fmt_hover(row['launch_angle'])} deg<br>"
+                f"Distance: {fmt_hover(row['hit_distance_sc'], 0)} ft<br>"
+                f"Contact Out In Front: {fmt_hover(row['intercept_ball_minus_batter_pos_y_inches'])} in<br>"
+                f"Attack Angle: {fmt_hover(row['attack_angle'])} deg<br>"
+                f"Attack Direction: {fmt_hover(row['attack_direction'])} deg<br>"
+                f"Swing Path Tilt: {fmt_hover(row['swing_path_tilt'])} deg<br>"
+                f"Bat Speed: {fmt_hover(row['bat_speed'])} mph<br>"
+                f"Swing Length: {fmt_hover(row['swing_length'])} ft<br>"
+                f"Squared-Up: {fmt_hover(row['squared_up_pct'] * 100)}% ({squared_up})<br>"
+                f"Event: {event}<br>Season: {season}"
+            )
+
         fig.add_trace(go.Scatter(
-            x=part["field_x"], y=part["field_y"], mode="markers", name=labels[bb_type], customdata=custom,
+            x=part["field_x"], y=part["field_y"], mode="markers", name=labels[bb_type],
+            text=hover_text,
             marker=dict(color=colors[bb_type], size=part["launch_speed"].div(5).clip(6, 18).fillna(8), opacity=.82, line=dict(width=.7, color="white")),
-            hovertemplate=(
-                "<b>%{customdata[0]}</b><br>Count: %{customdata[1]}-%{customdata[2]}<br>"
-                "Pitch: %{customdata[3]}<br>Zone: %{customdata[4]}<br>EV: %{customdata[5]:.1f} mph<br>"
-                "LA: %{customdata[6]:.1f}\u00b0<br>Distance: %{customdata[7]:.0f} ft<br>xBA: %{customdata[8]:.3f}<br>"
-                "xWOBA: %{customdata[9]:.3f}<br>Squared-Up: %{customdata[10]:.1f}%<br>"
-                "Bat Speed: %{customdata[11]:.1f} mph<br>Swing Length: %{customdata[12]:.1f} ft<extra></extra>"
+            hovertemplate="%{text}<extra></extra>",
+            hoverlabel=dict(
+                bgcolor="#f4f4f4",
+                bordercolor="#30363d",
+                font=dict(color="#111111", size=13, family="Arial"),
             ),
         ))
 
@@ -209,7 +222,7 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
         title="<br>".join([f"{player} Spray Chart", *subtitle]), height=760,
         margin=dict(l=10, r=10, t=120, b=10), paper_bgcolor="#0e1117", plot_bgcolor="#0e1117",
         font=dict(color="#e6edf3"), legend=dict(title="Batted Ball Type", bgcolor="rgba(255,255,255,.93)", font=dict(color="#446")),
-        hoverlabel=dict(font_color="black"),
+        hoverlabel=dict(bgcolor="#f4f4f4", bordercolor="#30363d", font=dict(color="#111111", size=13)),
         xaxis=dict(range=[-350, 350], visible=False, scaleanchor="y", scaleratio=1),
         yaxis=dict(range=[-25, 430], visible=False),
     )
