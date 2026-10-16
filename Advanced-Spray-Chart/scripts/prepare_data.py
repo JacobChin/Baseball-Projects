@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 from datetime import date, datetime
@@ -8,7 +8,7 @@ import pandas as pd
 from pybaseball import playerid_reverse_lookup, statcast
 
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "data" / "statcast_bbe_2024_2026.parquet"
 CACHE_DIR = ROOT / "data" / "cache_2026"
 LOCAL_2024 = Path(r"E:\Baseball\Data\Savant\2024_statcast_full.parquet")
@@ -88,5 +88,3 @@ if __name__ == "__main__":
     parser.add_argument("--end-date", default=date.today().isoformat())
     args = parser.parse_args()
     main(args.end_date)
-
-
