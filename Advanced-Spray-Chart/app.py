@@ -44,22 +44,7 @@ st.markdown(
     .block-container {padding-top: 1.1rem; max-width: 1500px;}
     [data-testid="stMetric"] {border: 1px solid #2d333b; padding: 10px 12px; border-radius: 6px;}
     [data-testid="stSidebar"] {min-width: 310px; max-width: 310px;}
-    .js-plotly-plot .hoverlayer .hovertext path {
-        fill: #ffffff !important;
-        stroke: #111111 !important;
-        stroke-width: 2px !important;
-        fill-opacity: 1 !important;
-    }
-    .js-plotly-plot .hoverlayer .hovertext text,
-    .js-plotly-plot .hoverlayer .hovertext tspan {
-        fill: #000000 !important;
-        color: #000000 !important;
-        fill-opacity: 1 !important;
-        opacity: 1 !important;
-        font-family: Arial, sans-serif !important;
-        font-size: 14px !important;
-        font-weight: 600 !important;
-    }
+
     </style>
     """,
     unsafe_allow_html=True,
@@ -228,8 +213,8 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
             marker=dict(color=colors[bb_type], size=part["launch_speed"].div(5).clip(6, 18).fillna(8), opacity=.82, line=dict(width=.7, color="white")),
             hoverinfo="text",
             hoverlabel=dict(
-                bgcolor="#ffffff",
-                bordercolor="#111111",
+                bgcolor=colors[bb_type],
+                bordercolor="#ffffff",
                 font=dict(color="#000000", size=14, family="Arial"),
             ),
         ))
@@ -238,7 +223,7 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
         title="<br>".join([f"{player} Spray Chart", *subtitle]), height=760,
         margin=dict(l=10, r=10, t=120, b=10), paper_bgcolor="#0e1117", plot_bgcolor="#0e1117",
         font=dict(color="#e6edf3"), legend=dict(title="Batted Ball Type", bgcolor="rgba(255,255,255,.93)", font=dict(color="#446")),
-        hoverlabel=dict(bgcolor="#ffffff", bordercolor="#111111", font=dict(color="#111111", size=13)),
+        hoverlabel=dict(bordercolor="#ffffff", font=dict(color="#000000", size=14, family="Arial")),
         xaxis=dict(range=[-350, 350], visible=False, scaleanchor="y", scaleratio=1),
         yaxis=dict(range=[-25, 430], visible=False),
     )
