@@ -37,7 +37,7 @@ METRICS = {
 }
 
 
-st.set_page_config(page_title="Advanced Spray Chart", page_icon="⚾", layout="wide")
+st.set_page_config(page_title="Advanced Spray Chart", page_icon="\u26be", layout="wide")
 st.markdown(
     """
     <style>
@@ -177,19 +177,29 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
         part = out[out["bb_type"].eq(bb_type)]
         if part.empty:
             continue
-        custom = np.column_stack([
-            part["batter_name"], part["balls"], part["strikes"], part["pitch_name"], part["zone"],
-            part["launch_speed"], part["launch_angle"], part["hit_distance_sc"],
-            part["estimated_ba_using_speedangle"], part["estimated_woba_using_speedangle"],
-            part["squared_up_pct"] * 100, part["bat_speed"], part["swing_length"],
-        ])
+        hover_columns = pd.DataFrame({
+            "batter_name": part["batter_name"].astype(str),
+            "balls": part["balls"],
+            "strikes": part["strikes"],
+            "pitch_name": part["pitch_name"].astype(str),
+            "zone": part["zone"],
+            "launch_speed": part["launch_speed"],
+            "launch_angle": part["launch_angle"],
+            "distance": part["hit_distance_sc"],
+            "xba": part["estimated_ba_using_speedangle"],
+            "xwoba": part["estimated_woba_using_speedangle"],
+            "squared_up_pct": part["squared_up_pct"] * 100,
+            "bat_speed": part["bat_speed"],
+            "swing_length": part["swing_length"],
+        })
+        custom = hover_columns.to_numpy(dtype=object)
         fig.add_trace(go.Scatter(
             x=part["field_x"], y=part["field_y"], mode="markers", name=labels[bb_type], customdata=custom,
             marker=dict(color=colors[bb_type], size=part["launch_speed"].div(5).clip(6, 18).fillna(8), opacity=.82, line=dict(width=.7, color="white")),
             hovertemplate=(
                 "<b>%{customdata[0]}</b><br>Count: %{customdata[1]}-%{customdata[2]}<br>"
                 "Pitch: %{customdata[3]}<br>Zone: %{customdata[4]}<br>EV: %{customdata[5]:.1f} mph<br>"
-                "LA: %{customdata[6]:.1f}°<br>Distance: %{customdata[7]:.0f} ft<br>xBA: %{customdata[8]:.3f}<br>"
+                "LA: %{customdata[6]:.1f}\u00b0<br>Distance: %{customdata[7]:.0f} ft<br>xBA: %{customdata[8]:.3f}<br>"
                 "xWOBA: %{customdata[9]:.3f}<br>Squared-Up: %{customdata[10]:.1f}%<br>"
                 "Bat Speed: %{customdata[11]:.1f} mph<br>Swing Length: %{customdata[12]:.1f} ft<extra></extra>"
             ),
@@ -242,7 +252,7 @@ def composite_table(data: pd.DataFrame, choices: list[str], min_bbes: int) -> pd
     keys = ["batter", "batter_name", "stand"]
     percentile_cols = []
     for choice in choices:
-        metric, direction = choice.rsplit(" · ", 1)
+        metric, direction = choice.rsplit(" | ", 1)
         values = metric_table(data, metric, min_bbes)[keys + [metric]]
         base = base.merge(values, on=keys, how="inner")
         pct_col = f"{metric} %ile ({direction})"
@@ -267,8 +277,13 @@ st.caption("Explore hitter contact quality across the 2024-2026 seasons.")
 with st.sidebar:
     st.header("Filters")
     seasons = st.multiselect("Season", available_years, default=available_years)
-    player_options = sorted(df.loc[df["game_year"].isin(seasons), "batter_name"].dropna().unique().tolist())
-    player = st.selectbox("Batter", player_options, index=0 if player_options else None)
+    player_options = sorted(df["batter_name"].dropna().unique().tolist())
+    player = st.selectbox(
+        "Batter",
+        player_options,
+        index=0 if player_options else None,
+        key="selected_batter",
+    )
     balls = st.multiselect("Balls", [0, 1, 2, 3], default=[0, 1, 2, 3])
     strikes = st.multiselect("Strikes", [0, 1, 2], default=[0, 1, 2])
     pitch_group = st.selectbox("Pitch Group", ["All", "Fastball", "Breaking", "Offspeed"])
@@ -309,7 +324,7 @@ with spray_tab:
             ("xBA", f"{player_data['estimated_ba_using_speedangle'].mean():.3f}"),
             ("xWOBA", f"{player_data['estimated_woba_using_speedangle'].mean():.3f}"),
             ("EV50", f"{ev50(player_data['launch_speed']):.1f}"),
-            ("Median LA", f"{player_data['launch_angle'].median():.1f}°"),
+            ("Median LA", f"{player_data['launch_angle'].median():.1f}\u00b0"),
             ("Squared-Up Rate", f"{player_data['is_squared_up'].mean() * 100:.1f}%"),
         ]
         columns = st.columns(len(metrics))
@@ -324,8 +339,8 @@ with leaderboard_tab:
     rows = top_controls[2].number_input("Rows", 1, 100, 15)
     composite_choices = []
     if metric == "Composite Percentile":
-        options = [f"{name} · {direction}" for name in METRICS for direction in ("high", "low")]
-        composite_choices = st.multiselect("Composite AND metrics", options, default=["xWOBA · high", "Squared-Up Rate · high"])
+        options = [f"{name} | {direction}" for name in METRICS for direction in ("high", "low")]
+        composite_choices = st.multiselect("Composite AND metrics", options, default=["xWOBA | high", "Squared-Up Rate | high"])
         if not composite_choices:
             st.info("Choose at least one composite metric.")
             st.stop()
