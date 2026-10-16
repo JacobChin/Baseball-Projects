@@ -18,7 +18,7 @@ An interactive Streamlit app for exploring hitter spray charts and advanced batt
 - `data/` - Compact 2024-2026 app-ready Statcast dataset.
 - `notebooks/` - Original Jupyter notebook workflow.
 - `scripts/` - Dataset download and refresh utilities.
-- `assets/` - Spray chart and leaderboard demonstration GIFs.
+- `visualizations/` - Spray chart and leaderboard demonstration GIFs.
 - `requirements.txt` - Python dependencies.
 ## Run The App
 
