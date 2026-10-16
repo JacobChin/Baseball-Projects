@@ -210,11 +210,11 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
             x=part["field_x"], y=part["field_y"], mode="markers", name=labels[bb_type],
             text=hover_text,
             marker=dict(color=colors[bb_type], size=part["launch_speed"].div(5).clip(6, 18).fillna(8), opacity=.82, line=dict(width=.7, color="white")),
-            hovertemplate="%{text}<extra></extra>",
+            hoverinfo="text",
             hoverlabel=dict(
-                bgcolor="#f4f4f4",
-                bordercolor="#30363d",
-                font=dict(color="#111111", size=13, family="Arial"),
+                bgcolor="#111827",
+                bordercolor="#cbd5e1",
+                font=dict(color="#ffffff", size=13, family="Arial"),
             ),
         ))
 
@@ -222,7 +222,7 @@ def spray_figure(data: pd.DataFrame, player: str, subtitle: list[str]) -> go.Fig
         title="<br>".join([f"{player} Spray Chart", *subtitle]), height=760,
         margin=dict(l=10, r=10, t=120, b=10), paper_bgcolor="#0e1117", plot_bgcolor="#0e1117",
         font=dict(color="#e6edf3"), legend=dict(title="Batted Ball Type", bgcolor="rgba(255,255,255,.93)", font=dict(color="#446")),
-        hoverlabel=dict(bgcolor="#f4f4f4", bordercolor="#30363d", font=dict(color="#111111", size=13)),
+        hoverlabel=dict(bgcolor="#111827", bordercolor="#cbd5e1", font=dict(color="#111111", size=13)),
         xaxis=dict(range=[-350, 350], visible=False, scaleanchor="y", scaleratio=1),
         yaxis=dict(range=[-25, 430], visible=False),
     )
