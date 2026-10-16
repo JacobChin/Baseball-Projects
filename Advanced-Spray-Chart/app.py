@@ -327,7 +327,7 @@ with spray_tab:
         if pitch_group != "All": subtitle.append(f"Pitch Group: {pitch_group}")
         if squared_mode != "All": subtitle.append(f"Squared-Up %: {squared_mode} {squared_filter_pct:.0f}%")
         fig = spray_figure(player_data, player, subtitle)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, theme=None)
         hits = player_data["events"].isin(HIT_EVENTS).sum()
         outs = player_data["events"].isin(OUT_EVENTS).sum()
         ab = hits + outs
