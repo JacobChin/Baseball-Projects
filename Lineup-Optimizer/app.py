@@ -1,4 +1,4 @@
-﻿"""Interactive lineup simulator app."""
+"""Interactive lineup simulator app."""
 
 from __future__ import annotations
 
@@ -13,7 +13,13 @@ import baseball_lineup_optimizer.data.baseball_reference as baseball_reference_i
 from baseball_lineup_optimizer.engine.evaluator import attach_stolen_base_rates, profiles_from_rows
 from baseball_lineup_optimizer.engine.lineup_optimizer import optimize_lineup_order
 from baseball_lineup_optimizer.engine.outcomes import HitterProfile
-from baseball_lineup_optimizer.engine.plan_engine import PlanEngineConfig, expected_one_run_probability_plan, expected_runs_plan, transition_model_summary
+from baseball_lineup_optimizer.engine.plan_engine import (
+    PlanEngineConfig,
+    expected_one_run_probability_plan,
+    expected_risp_one_run_probability_plan,
+    expected_runs_plan,
+    transition_model_summary,
+)
 from baseball_lineup_optimizer.experiments.orderings import lineup_names
 
 
@@ -482,8 +488,16 @@ def _render_simulation_actions(
 ) -> None:
     st.subheader("Run")
     if len(lineup) != 9:
-        st.button("Simulate selected order", disabled=True, use_container_width=True)
-        st.button("Optimize batting order", disabled=True, use_container_width=True)
+        first_row_left, first_row_right = st.columns(2)
+        with first_row_left:
+            st.button("Simulate selected order", disabled=True, use_container_width=True)
+        with first_row_right:
+            st.button("Optimize batting order", disabled=True, use_container_width=True)
+        second_row_left, second_row_right = st.columns(2)
+        with second_row_left:
+            st.button("One-run probability", disabled=True, use_container_width=True)
+        with second_row_right:
+            st.button("RISP one-run probability", disabled=True, use_container_width=True)
         return
 
     config = PlanEngineConfig(
@@ -494,20 +508,14 @@ def _render_simulation_actions(
         runner_advancement_model="empirical_speed_attempt",
         speed_attempt_model_path=str(SPEED_ATTEMPT_MODEL_PATH),
     )
-    sim_col, one_run_col, opt_col = st.columns(3)
-    with sim_col:
+    first_row_left, first_row_right = st.columns(2)
+    with first_row_left:
         if st.button("Simulate selected order", use_container_width=True):
             with st.spinner("Simulating selected order..."):
                 result = expected_runs_plan(lineup, games=games, seed=seed, innings_per_game=9, config=config)
             _show_result("Selected order", lineup, result.runs_per_game, result.run_std, result.games)
 
-    with one_run_col:
-        if st.button("One-run probability", use_container_width=True):
-            with st.spinner("Simulating one-run innings..."):
-                result = expected_one_run_probability_plan(lineup, trials=games, seed=seed, config=config)
-            _show_one_run_result("One-run probability", lineup, result)
-
-    with opt_col:
+    with first_row_right:
         if st.button("Optimize batting order", type="primary", use_container_width=True):
             with st.spinner("Testing candidate orders..."):
                 optimized = optimize_lineup_order(
@@ -527,6 +535,19 @@ def _render_simulation_actions(
                 optimized.result.games,
             )
 
+    second_row_left, second_row_right = st.columns(2)
+    with second_row_left:
+        if st.button("One-run probability", use_container_width=True):
+            with st.spinner("Simulating one-run innings..."):
+                result = expected_one_run_probability_plan(lineup, trials=games, seed=seed, config=config)
+            _show_one_run_result("One-run probability", lineup, result)
+
+    with second_row_right:
+        if st.button("RISP one-run probability", use_container_width=True):
+            with st.spinner("Simulating 2025 RISP situations..."):
+                result = expected_risp_one_run_probability_plan(lineup, trials=games, seed=seed, config=config)
+            _show_one_run_result("RISP one-run probability", lineup, result)
+            st.caption("Weighted across the empirical mix of all 18 RISP base/out states from 2025.")
 
 def _show_result(label: str, lineup: list[HitterProfile], runs: float, run_std: float, games: int) -> None:
     st.metric(label, f"{runs:.3f} runs / 9")
@@ -563,8 +584,7 @@ def _saved_custom_label(row: dict[str, object]) -> str:
         f"{row['player_name']} - wOBA {float(row.get('woba', 0)):.3f} - "
         f"{int(row.get('hr', 0))} HR - Sprint {float(row.get('sprint_speed', 27.0)):.1f} - "
         f"H2F {float(row.get('home_to_first', 4.35)):.2f} - {int(row.get('sb', 0))}/{int(row.get('cs', 0))} SB/CS - "
-        f"{int(row.get('bb', 0))}/{int(row.get('k', 0))} BB/SO - "
-        f"{row.get('eligible_groups', 'UTIL only')}"
+        f"{int(row.get('bb', 0))}/{int(row.get('k', 0))} BB/SO"
     )
 
 

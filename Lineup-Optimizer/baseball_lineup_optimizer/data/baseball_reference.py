@@ -1,14 +1,99 @@
-"""Import hitter seasons from Baseball-Reference player pages."""
+﻿"""Import hitter seasons from Baseball-Reference player pages."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from io import StringIO
+from html.parser import HTMLParser
 import re
 
+import pandas as pd
 import requests
 
-import pandas as pd
+
+BASEBALL_REFERENCE_TABLES = {
+    "players_standard_batting": {
+        "year_id": "Season",
+        "team_name_abbr": "Team",
+        "b_pa": "PA",
+        "b_ab": "AB",
+        "b_h": "H",
+        "b_doubles": "2B",
+        "b_triples": "3B",
+        "b_hr": "HR",
+        "b_bb": "BB",
+        "b_hbp": "HBP",
+        "b_so": "SO",
+        "b_sb": "SB",
+        "b_cs": "CS",
+    },
+    "players_value_batting": {
+        "year_id": "Season",
+        "team_name_abbr": "Team",
+        "b_pa": "PA",
+        "b_runs_double_plays": "Rdp",
+    },
+    "players_advanced_batting": {
+        "year_id": "Season",
+        "team_name_abbr": "Team",
+        "b_pa": "PA",
+        "b_ld_perc": "LD%",
+        "b_gb_perc": "GB%",
+        "b_fb_perc": "FB%",
+        "b_extra_bases_taken_perc": "XBT%",
+    },
+}
+
+
+class _BaseballReferenceTableParser(HTMLParser):
+    """Extract selected Baseball-Reference tables without optional HTML libraries."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.rows: dict[str, list[dict[str, str]]] = {table_id: [] for table_id in BASEBALL_REFERENCE_TABLES}
+        self._table_id: str | None = None
+        self._table_depth = 0
+        self._row: dict[str, str] | None = None
+        self._cell_stat: str | None = None
+        self._cell_text: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = dict(attrs)
+        if tag == "table":
+            if self._table_id is not None:
+                self._table_depth += 1
+            elif attributes.get("id") in BASEBALL_REFERENCE_TABLES:
+                self._table_id = str(attributes["id"])
+                self._table_depth = 1
+            return
+        if self._table_id is None:
+            return
+        if tag == "tr":
+            self._row = {}
+        elif tag in {"th", "td"} and self._row is not None:
+            self._cell_stat = attributes.get("data-stat")
+            self._cell_text = []
+
+    def handle_data(self, data: str) -> None:
+        if self._cell_stat is not None:
+            self._cell_text.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if self._table_id is None:
+            return
+        if tag in {"th", "td"} and self._row is not None and self._cell_stat is not None:
+            value = re.sub(r"\s+", " ", "".join(self._cell_text)).strip()
+            self._row[self._cell_stat] = value
+            self._cell_stat = None
+            self._cell_text = []
+        elif tag == "tr" and self._row is not None:
+            if self._row.get("year_id"):
+                self.rows[self._table_id].append(self._row)
+            self._row = None
+        elif tag == "table":
+            self._table_depth -= 1
+            if self._table_depth <= 0:
+                self._table_id = None
+                self._table_depth = 0
 
 
 @dataclass(frozen=True)
@@ -63,12 +148,19 @@ def import_baseball_reference_hitter_season(url: str, season: int) -> BaseballRe
     if "baseball-reference.com" not in url:
         raise ValueError("Paste a Baseball-Reference player page URL.")
 
-    html = requests.get(url, timeout=20).text
+    response = requests.get(
+        url,
+        timeout=20,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; LineupOptimizer/1.0)"},
+    )
+    if hasattr(response, "raise_for_status"):
+        response.raise_for_status()
+    html = response.text
     player_name = _player_name_from_html(html, url)
-    tables = [_flatten_columns(table) for table in pd.read_html(StringIO(html))]
-    standard = _find_table(tables, {"Season", "PA", "AB", "H", "2B", "3B", "HR", "BB", "SO"})
-    value = _find_table(tables, {"Season", "PA", "Rdp"})
-    advanced = _find_table(tables, {"Season", "PA", "LD%", "GB%", "FB%"}, required=False)
+    parsed_tables = _parse_baseball_reference_tables(html)
+    standard = parsed_tables["players_standard_batting"]
+    value = parsed_tables["players_value_batting"]
+    advanced = parsed_tables.get("players_advanced_batting")
 
     standard_row = _season_row(standard, season)
     value_row = _season_row(value, season)
@@ -103,29 +195,20 @@ def import_baseball_reference_hitter_season(url: str, season: int) -> BaseballRe
     )
 
 
-def _flatten_columns(df: pd.DataFrame) -> pd.DataFrame:
-    result = df.copy()
-    if isinstance(result.columns, pd.MultiIndex):
-        result.columns = [
-            next((str(part) for part in reversed(column) if not str(part).startswith("Unnamed")), str(column[-1]))
-            for column in result.columns
-        ]
-    else:
-        result.columns = [str(column) for column in result.columns]
-    return result
-
-
-def _find_table(
-    tables: list[pd.DataFrame],
-    required_columns: set[str],
-    required: bool = True,
-) -> pd.DataFrame | None:
-    for table in tables:
-        if required_columns.issubset(set(table.columns)):
-            return table
-    if required:
-        raise ValueError(f"Could not find Baseball-Reference table with columns: {sorted(required_columns)}")
-    return None
+def _parse_baseball_reference_tables(html: str) -> dict[str, pd.DataFrame]:
+    parser = _BaseballReferenceTableParser()
+    parser.feed(html)
+    tables: dict[str, pd.DataFrame] = {}
+    for table_id, columns in BASEBALL_REFERENCE_TABLES.items():
+        rows = parser.rows[table_id]
+        if not rows:
+            if table_id == "players_advanced_batting":
+                continue
+            raise ValueError(f"Could not find Baseball-Reference table: {table_id}")
+        tables[table_id] = pd.DataFrame(
+            [{output: row.get(source, "") for source, output in columns.items()} for row in rows]
+        )
+    return tables
 
 
 def _season_row(table: pd.DataFrame, season: int) -> pd.Series:
@@ -143,14 +226,14 @@ def _season_row(table: pd.DataFrame, season: int) -> pd.Series:
 
 def _int_value(row: pd.Series, column: str) -> int:
     value = row.get(column, 0)
-    if pd.isna(value):
+    if pd.isna(value) or str(value).strip() == "":
         return 0
     return int(float(str(value).replace(",", "")))
 
 
 def _float_value(row: pd.Series, column: str) -> float:
     value = row.get(column, 0.0)
-    if pd.isna(value):
+    if pd.isna(value) or str(value).strip() == "":
         return 0.0
     return float(str(value).replace(",", "").replace("%", ""))
 
@@ -159,7 +242,7 @@ def _percent_value(row: pd.Series, column: str, default: float) -> float:
     if row.empty:
         return default
     value = row.get(column)
-    if pd.isna(value):
+    if pd.isna(value) or str(value).strip() == "":
         return default
     numeric = _float_value(row, column)
     return numeric / 100.0 if abs(numeric) > 1 else numeric

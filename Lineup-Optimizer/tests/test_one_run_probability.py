@@ -6,7 +6,9 @@ import numpy as np
 from baseball_lineup_optimizer.engine.outcomes import make_synthetic_hitter
 from baseball_lineup_optimizer.engine.plan_engine import (
     PlanEngineConfig,
+    _risp_initial_state,
     expected_one_run_probability_plan,
+    expected_risp_one_run_probability_plan,
     expected_runs_plan,
     simulate_one_run_trial,
 )
@@ -90,3 +92,35 @@ def test_normal_runs_per_9_path_still_works_after_adding_one_run_mode():
 
     assert math.isclose(result.runs_per_game, 0.0)
     assert result.games == 5
+
+def test_risp_probability_scores_for_certain_home_run_and_not_for_certain_strikeout():
+    slugger = hitter("Slugger", hr=1.0)
+    strikeout = hitter("Out", k=1.0)
+
+    slugger_result = expected_risp_one_run_probability_plan(
+        [slugger] * 9,
+        trials=180,
+        seed=6,
+        config=PlanEngineConfig(),
+    )
+    strikeout_result = expected_risp_one_run_probability_plan(
+        [strikeout] * 9,
+        trials=180,
+        seed=6,
+        config=PlanEngineConfig(),
+    )
+
+    assert slugger_result.probability == 1.0
+    assert strikeout_result.probability == 0.0
+    assert slugger_result.trials == 180
+
+
+def test_risp_initial_state_uses_preceding_lineup_slots_for_existing_runners():
+    lineup = [hitter(f"Hitter {index}", k=1.0) for index in range(1, 10)]
+
+    state = _risp_initial_state(lineup, "123", outs=1)
+
+    assert state.first is lineup[8]
+    assert state.second is lineup[7]
+    assert state.third is lineup[6]
+    assert state.outs == 1

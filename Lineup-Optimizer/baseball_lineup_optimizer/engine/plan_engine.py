@@ -1,4 +1,4 @@
-﻿"""Plan-aligned Monte Carlo offense engine.
+"""Plan-aligned Monte Carlo offense engine.
 
 This engine implements the first working version of the user's 2025 MLB offense
 simulation plan. It keeps the simulation PA-level, removes IBBs and sacrifice
@@ -50,6 +50,28 @@ PLAN_OUTCOMES = (
     "popup_out",
 )
 
+
+# Empirical frequency of 2025 plate appearances that began in each RISP state.
+RISP_STATE_COUNTS = (
+    ("--3", 0, 281),
+    ("-2-", 0, 2941),
+    ("-23", 0, 610),
+    ("1-3", 0, 873),
+    ("12-", 0, 3358),
+    ("123", 0, 911),
+    ("--3", 1, 1361),
+    ("-2-", 1, 4229),
+    ("-23", 1, 1482),
+    ("1-3", 1, 1900),
+    ("12-", 1, 5401),
+    ("123", 1, 1986),
+    ("--3", 2, 2303),
+    ("-2-", 2, 5399),
+    ("-23", 2, 1579),
+    ("1-3", 2, 2513),
+    ("12-", 2, 6698),
+    ("123", 2, 2574),
+)
 
 FITTED_GDP_HT1_INTERCEPT = -0.707111
 FITTED_GDP_HT1_COEFFICIENT = 0.361611
@@ -224,18 +246,109 @@ def expected_one_run_probability_plan(
     )
 
 
+def expected_risp_one_run_probability_plan(
+    lineup: Sequence[HitterProfile],
+    trials: int = 100_000,
+    seed: int | None = 202503,
+    max_plate_appearances_per_trial: int = 60,
+    config: PlanEngineConfig | None = None,
+    starting_batter_index: int = 0,
+) -> OneRunProbabilityResult:
+    """Estimate P(score >= 1) from the empirical mix of 2025 RISP states."""
+
+    _validate_lineup(lineup)
+    if trials <= 0:
+        raise ValueError("trials must be positive.")
+
+    rng = np.random.default_rng(seed)
+    model_config = config or PlanEngineConfig(use_empirical_transitions=True)
+    weights = np.asarray([count for _, _, count in RISP_STATE_COUNTS], dtype=float)
+    sampled_states = rng.choice(len(RISP_STATE_COUNTS), size=trials, p=weights / weights.sum())
+    results: list[OneRunTrialResult] = []
+    for state_index in sampled_states:
+        base_state, outs, _ = RISP_STATE_COUNTS[int(state_index)]
+        results.append(
+            simulate_one_run_trial(
+                lineup,
+                rng,
+                max_plate_appearances=max_plate_appearances_per_trial,
+                config=model_config,
+                initial_state=_risp_initial_state(
+                    lineup,
+                    base_state,
+                    outs,
+                    starting_batter_index=starting_batter_index,
+                ),
+                starting_batter_index=starting_batter_index,
+            )
+        )
+
+    successes = sum(1 for result in results if result.success)
+    failures = trials - successes
+    probability = successes / trials
+    standard_error = float(np.sqrt(probability * (1.0 - probability) / trials))
+    first_run_outs = {outs: sum(1 for result in results if result.first_run_outs == outs) for outs in (0, 1, 2)}
+    return OneRunProbabilityResult(
+        trials=trials,
+        successes=successes,
+        failures=failures,
+        probability=float(probability),
+        standard_error=standard_error,
+        ci95_low=float(max(0.0, probability - 1.96 * standard_error)),
+        ci95_high=float(min(1.0, probability + 1.96 * standard_error)),
+        average_pa_per_trial=float(np.mean([result.plate_appearances for result in results])),
+        first_run_out_0_probability=float(first_run_outs[0] / trials),
+        first_run_out_1_probability=float(first_run_outs[1] / trials),
+        first_run_out_2_probability=float(first_run_outs[2] / trials),
+        sb_attempts_per_trial=float(np.mean([result.sb_attempts for result in results])),
+        sb_per_trial=float(np.mean([result.sb for result in results])),
+        cs_per_trial=float(np.mean([result.cs for result in results])),
+        seed=seed,
+    )
+
+
+def _risp_initial_state(
+    lineup: Sequence[HitterProfile],
+    base_state: str,
+    outs: int,
+    starting_batter_index: int = 0,
+) -> RunnerBaseState:
+    if len(base_state) != 3 or any(value not in "-123" for value in base_state):
+        raise ValueError(f"Invalid base state: {base_state!r}")
+    if outs not in (0, 1, 2):
+        raise ValueError("outs must be 0, 1, or 2.")
+
+    previous_hitters = (
+        lineup[(starting_batter_index - offset) % len(lineup)]
+        for offset in range(1, 4)
+    )
+    runners = [
+        next(previous_hitters) if occupied != "-" else None
+        for occupied in base_state
+    ]
+    return RunnerBaseState(
+        first=runners[0],
+        second=runners[1],
+        third=runners[2],
+        outs=outs,
+    )
+
 def simulate_one_run_trial(
     lineup: Sequence[HitterProfile],
     rng: np.random.Generator,
     max_plate_appearances: int = 60,
     config: PlanEngineConfig | None = None,
+    initial_state: RunnerBaseState | None = None,
+    starting_batter_index: int = 0,
 ) -> OneRunTrialResult:
-    """Simulate one fresh inning and stop at the first run or third out."""
+    """Simulate one inning and stop at the first run or third out."""
 
     _validate_lineup(lineup)
     model_config = config or PlanEngineConfig(use_empirical_transitions=True)
-    state = RunnerBaseState()
-    batter_index = 0
+    state = initial_state or RunnerBaseState()
+    if state.outs < 0 or state.outs >= 3:
+        raise ValueError("initial_state outs must be 0, 1, or 2.")
+    batter_index = int(starting_batter_index) % len(lineup)
     completed_plate_appearances = 0
     sb_attempts = 0
     sb = 0
