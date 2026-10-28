@@ -60,16 +60,12 @@ def main() -> None:
             transition_model_path=str(TRANSITION_MODEL_PATH),
         )
     )
-    if model_summary.get("loaded"):
-        st.caption(
-            "Plan empirical engine: PA-level 9-inning offense with 2025 Statcast joint transitions, "
-            "player-shrunk single/GB/flyout details, IBB/SH removed when available, no WP/PB/errors."
-        )
-    else:
-        st.caption(
-            "Plan engine fallback: PA-level 9-inning offense, IBB/SH removed when available, "
-            "distinct GB/FB/LD/popup outs, no WP/PB/errors."
-        )
+    st.info(
+        "Start by searching for a 2025 player and selecting **Add player**. Repeat until all 9 slots "
+        "are filled, or select **Fill all 9 slots** to create a clone lineup. You can also load or "
+        "create a custom hitter below. Then select **Simulate selected order** to test the lineup or "
+        "**Optimize batting order** to search for a stronger order."
+    )
 
     with st.sidebar:
         st.header("Simulation")
