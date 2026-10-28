@@ -29,7 +29,7 @@ CONTEXTUAL_WALK_MODEL_PATH = DATA_DIR / "contextual_walk_model_2025.json"
 DEFAULT_GAMES = 1_000
 
 
-st.set_page_config(page_title="Lineup Lab", layout="wide")
+st.set_page_config(page_title="Lineup Optimizer", layout="wide")
 
 
 @st.cache_data
@@ -53,7 +53,7 @@ def main() -> None:
     pool = _load_pool(str(PLAYER_POOL_PATH), str(STOLEN_BASE_RATES_PATH))
     position_eligibility = _load_position_eligibility(str(POSITION_ELIGIBILITY_PATH))
 
-    st.title("Lineup Lab")
+    st.title("Lineup Optimizer")
     model_summary = transition_model_summary(
         PlanEngineConfig(
             use_empirical_transitions=True,

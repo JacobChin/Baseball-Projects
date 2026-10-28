@@ -1,4 +1,4 @@
-﻿# Lineup Lab
+﻿# Lineup Optimizer
 
 An interactive Streamlit app and Monte Carlo research project for estimating MLB lineup run production, comparing batting orders, and exploring how different hitter profiles interact within an offense.
 

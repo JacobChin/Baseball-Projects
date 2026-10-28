@@ -10,8 +10,8 @@ This project builds on Driveline Baseball's OpenBiomechanics hitting data to cre
 This project is an interactive Streamlit spray chart and leaderboard app built from Statcast batted-ball and bat-tracking data covering 2024 through 2026. It can be launched directly without running notebook setup cells and includes a compact app-ready dataset in the project folder. Users can filter by season, hitter, count, pitch group or pitch type, strike zone location, pitcher handedness, batted-ball result, normalized spray angle, and minimum batted balls. Zone filters mirror automatically by hitter handedness.
 
 The app includes xBA, xwOBA, EV50, median launch angle, squared-up rate, bat speed, swing length, attack angle, swing path tilt, and contact point out in front. Squared-up contact can be defined at a custom threshold, with optional over/under point filtering. The leaderboard also supports multi-metric composite percentiles, searchable player rows, and downloadable interactive charts and CSV tables.
-## Lineup Lab:
-Lineup Lab is an interactive Streamlit offense simulator for selecting any nine 2025 hitters, creating custom hitters, simulating an ordered lineup, and searching candidate batting orders. Duplicate hitters are allowed, making clone-lineup experiments such as nine Aaron Judges possible.
+## Lineup Optimizer:
+Lineup Optimizer is an interactive Streamlit offense simulator for selecting any nine 2025 hitters, creating custom hitters, simulating an ordered lineup, and searching candidate batting orders. Duplicate hitters are allowed, making clone-lineup experiments such as nine Aaron Judges possible.
 
 The production model combines season-level plate-appearance outcomes with direct 2021-2025 runner-movement transitions, Sprint Speed-sensitive advancement, contextual stolen-base behavior, a fitted double-play adjustment, and an optional contextual non-intentional walk model. The project also includes high-precision clone, no-duplicate, positional, decade, and all-time lineup results, along with a detailed model specification and limitations.
 ## Optimal Contact Point:
