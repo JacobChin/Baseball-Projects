@@ -44,9 +44,16 @@ The high-precision cross-era search found this all-time no-duplicate lineup at *
 
 The reported finalist orders were simulated for 100,000 games each. Historical comparisons retain actual strikeouts and stolen bases, standardize missing caught-stealing information, and neutralize unavailable pre-Statcast running and batted-ball detail.
 
+### RISP-Start Experiment
+
+A separate clone-lineup experiment starts from all 18 base/out states containing a runner in scoring position, weighted by 46,399 actual 2025 MLB plate appearances. The ranking changed materially from the bases-empty one-run leaderboard: rank correlation was 0.739, only 4 of the original top 10 remained, and only 15 of the original top 25 remained.
+
+Contact-oriented hitters gained substantial value when runners were already in scoring position. Chandler Simpson moved from 157th to 23rd, Steven Kwan from 168th to 42nd, and Luis Arraez from 176th to 55th. These are simulation-specific results: every occupied starting base contains the cloned hitter, so the experiment combines each player's hitting and baserunning value rather than isolating batter-only performance with neutral runners.
+
 - [No-duplicate lineups by decade and all time](results/no_duplicate_lineups_by_decade_and_all_time.md)
 - [All-time clone leaderboard](results/all_time_top20_clone_runs9.md)
 - [Current 2025 optimal-lineup report](results/current_optimal_lineups_2025.md)
+- [2025 RISP-start clone leaderboard](results/risp_one_run_report.md)
 
 ## Project Structure
 
