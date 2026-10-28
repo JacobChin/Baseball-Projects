@@ -11,6 +11,9 @@ This project is an interactive Streamlit spray chart and leaderboard app built f
 
 The app includes xBA, xwOBA, EV50, median launch angle, squared-up rate, bat speed, swing length, attack angle, swing path tilt, and contact point out in front. Squared-up contact can be defined at a custom threshold, with optional over/under point filtering. The leaderboard also supports multi-metric composite percentiles, searchable player rows, and downloadable interactive charts and CSV tables.
 ## Lineup Optimizer:
+
+[Open the live Lineup Optimizer app](https://jacobchin-lineup-optimizer.streamlit.app/)
+
 Lineup Optimizer is an interactive Streamlit offense simulator for selecting any nine 2025 hitters, creating custom hitters, simulating an ordered lineup, and searching candidate batting orders. Duplicate hitters are allowed, making clone-lineup experiments such as nine Aaron Judges possible.
 
 The production model combines season-level plate-appearance outcomes with direct 2021-2025 runner-movement transitions, Sprint Speed-sensitive advancement, contextual stolen-base behavior, a fitted double-play adjustment, and an optional contextual non-intentional walk model. The project also includes lineups by decade, all-time lineup results, along with a detailed model specification and limitations.

@@ -2,6 +2,10 @@
 
 An interactive Streamlit app and Monte Carlo research project for estimating MLB lineup run production, comparing batting orders, and exploring how different hitter profiles interact within an offense.
 
+## Live App
+
+[Open Lineup Optimizer](https://jacobchin-lineup-optimizer.streamlit.app/)
+
 ## Features
 
 - Select any nine 2025 hitters, including duplicate players.
