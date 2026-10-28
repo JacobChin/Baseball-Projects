@@ -1,0 +1,420 @@
+{
+  "season": 2025,
+  "source_seasons": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "neutral_sprint_speed": 27.35,
+  "model_family": "direct_movement_regularized_logistic_attempt_2021_2025_equal_weight",
+  "player_profile_scope": "runtime uses 2025 player sprint speed only",
+  "models": {
+    "single_1b_to_3b": {
+      "label": "1B -> 3B+ on outfield single",
+      "event": "single",
+      "origin": "first",
+      "model_type": "linear",
+      "attempt_destinations": [
+        "out",
+        "score",
+        "third"
+      ],
+      "no_attempt_destinations": [
+        "second"
+      ],
+      "coefficients": {
+        "intercept": -0.45401995182324567,
+        "speed_c": 0.2490405144253338,
+        "detail_cf": 0.07990291034603042,
+        "detail_lf": -0.9507044100668341,
+        "detail_rf": 0.41771677858855377,
+        "outs_0": -0.4861322283943607,
+        "outs_1": -0.32794399200339014,
+        "outs_2": 0.3609914992654996
+      }
+    },
+    "single_2b_to_home": {
+      "label": "2B -> Home on outfield single",
+      "event": "single",
+      "origin": "second",
+      "model_type": "linear",
+      "attempt_destinations": [
+        "out",
+        "score"
+      ],
+      "no_attempt_destinations": [
+        "third"
+      ],
+      "coefficients": {
+        "intercept": 1.008798193445112,
+        "speed_c": 0.28516587354331485,
+        "detail_cf": 0.4189359138254105,
+        "detail_lf": -0.281001890679968,
+        "detail_rf": -0.14098549535583343,
+        "outs_0": -1.0964264020320647,
+        "outs_1": -0.5279526082194851,
+        "outs_2": 1.6213275380411705
+      }
+    },
+    "double_1b_to_home": {
+      "label": "1B -> Home on double",
+      "event": "double",
+      "origin": "first",
+      "model_type": "linear",
+      "attempt_destinations": [
+        "out",
+        "score"
+      ],
+      "no_attempt_destinations": [
+        "third"
+      ],
+      "coefficients": {
+        "intercept": -0.2760196445107201,
+        "speed_c": 0.3577488650283158,
+        "outs_0": -0.586307560299878,
+        "outs_1": -0.3562112641173945,
+        "outs_2": 0.6679599867815109
+      }
+    },
+    "flyout_1b_to_2b": {
+      "label": "1B tag to 2B on flyout",
+      "event": "fb_out",
+      "origin": "first",
+      "model_type": "linear",
+      "attempt_destinations": [
+        "out",
+        "score",
+        "second",
+        "third"
+      ],
+      "no_attempt_destinations": [
+        "first"
+      ],
+      "coefficients": {
+        "intercept": -3.0820157434729163,
+        "speed_c": 0.13591520061701243,
+        "direction_cf": 0.07035231268874466,
+        "direction_lf": -0.041293840662558014,
+        "direction_rf": -0.11943923305209318,
+        "direction_unknown": 0.09627540663961281,
+        "distance_deep": 0.4579810025229992,
+        "distance_medium": -0.11315400788831531,
+        "distance_short": -0.5341321246243387,
+        "distance_unknown": 0.19519977560313326,
+        "outs_0": 0.14424378257808224,
+        "outs_1": -0.1383491369644779
+      }
+    },
+    "flyout_2b_to_3b": {
+      "label": "2B tag to 3B on flyout",
+      "event": "fb_out",
+      "origin": "second",
+      "model_type": "linear",
+      "attempt_destinations": [
+        "out",
+        "score",
+        "third"
+      ],
+      "no_attempt_destinations": [
+        "second"
+      ],
+      "coefficients": {
+        "intercept": -1.6552333926372438,
+        "speed_c": 0.1638542645789763,
+        "direction_cf": 0.06752728516746533,
+        "direction_lf": -1.2348360459029897,
+        "direction_rf": 1.4573508958687478,
+        "direction_unknown": -0.28801084165289426,
+        "distance_deep": 1.9188783525796387,
+        "distance_medium": -0.7702596059749865,
+        "distance_short": -2.264306537005332,
+        "distance_unknown": 1.1177190838813182,
+        "outs_0": 0.31531079533262113,
+        "outs_1": -0.31327950185207887
+      }
+    },
+    "flyout_3b_to_home": {
+      "label": "3B tag home on flyout",
+      "event": "fb_out",
+      "origin": "third",
+      "model_type": "linear",
+      "attempt_destinations": [
+        "out",
+        "score"
+      ],
+      "no_attempt_destinations": [
+        "third"
+      ],
+      "coefficients": {
+        "intercept": 1.5164318844300482,
+        "speed_c": 0.144605313606384,
+        "direction_cf": 0.15749989831633157,
+        "direction_lf": 0.33692772580263186,
+        "direction_rf": 0.28305880738814454,
+        "direction_unknown": -0.7776667938802463,
+        "distance_deep": 4.1856606433979,
+        "distance_medium": -1.30521099398901,
+        "distance_short": -3.5564147221482774,
+        "distance_unknown": 0.6757847103663142,
+        "outs_0": -0.17218546035537616,
+        "outs_1": 0.17200509798217517
+      }
+    }
+  },
+  "validation": [],
+  "training_summary": [
+    {
+      "model_name": "single_1b_to_3b",
+      "label": "1B -> 3B+ on outfield single",
+      "training_rows": 34470,
+      "attempts": 11989,
+      "attempt_rate": 0.3478096895851465,
+      "unique_runners": 1016,
+      "speed_coefficient": 0.2490405144253338,
+      "speed_se": 0.009378755675587618,
+      "converged": true
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "label": "2B -> Home on outfield single",
+      "training_rows": 20087,
+      "attempts": 14304,
+      "attempt_rate": 0.7121023547568078,
+      "unique_runners": 977,
+      "speed_coefficient": 0.28516587354331485,
+      "speed_se": 0.013402508977648815,
+      "converged": true
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "label": "1B -> Home on double",
+      "training_rows": 12439,
+      "attempts": 5282,
+      "attempt_rate": 0.4246322051611866,
+      "unique_runners": 925,
+      "speed_coefficient": 0.3577488650283158,
+      "speed_se": 0.01528906028058444,
+      "converged": true
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "label": "1B tag to 2B on flyout",
+      "training_rows": 23404,
+      "attempts": 1239,
+      "attempt_rate": 0.05293966843274654,
+      "unique_runners": 985,
+      "speed_coefficient": 0.13591520061701243,
+      "speed_se": 0.02269102136096639,
+      "converged": true
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "label": "2B tag to 3B on flyout",
+      "training_rows": 13246,
+      "attempts": 4737,
+      "attempt_rate": 0.3576173939302431,
+      "unique_runners": 927,
+      "speed_coefficient": 0.1638542645789763,
+      "speed_se": 0.01713031128787612,
+      "converged": true
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "label": "3B tag home on flyout",
+      "training_rows": 7650,
+      "attempts": 6217,
+      "attempt_rate": 0.8126797385620915,
+      "unique_runners": 860,
+      "speed_coefficient": 0.144605313606384,
+      "speed_se": 0.02636446426600471,
+      "converged": true
+    }
+  ],
+  "representative_probabilities": [
+    {
+      "model_name": "single_1b_to_3b",
+      "sprint_speed": 24.5,
+      "predicted_attempt_probability": 0.2180359210994464
+    },
+    {
+      "model_name": "single_1b_to_3b",
+      "sprint_speed": 26.0,
+      "predicted_attempt_probability": 0.28286225431821715
+    },
+    {
+      "model_name": "single_1b_to_3b",
+      "sprint_speed": 27.35,
+      "predicted_attempt_probability": 0.3493183564966586
+    },
+    {
+      "model_name": "single_1b_to_3b",
+      "sprint_speed": 28.5,
+      "predicted_attempt_probability": 0.4104965334360903
+    },
+    {
+      "model_name": "single_1b_to_3b",
+      "sprint_speed": 30.0,
+      "predicted_attempt_probability": 0.49372755167259885
+    },
+    {
+      "model_name": "single_1b_to_3b",
+      "sprint_speed": 30.5,
+      "predicted_attempt_probability": 0.521686574773166
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "sprint_speed": 24.5,
+      "predicted_attempt_probability": 0.5694255428073678
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "sprint_speed": 26.0,
+      "predicted_attempt_probability": 0.6467267800171459
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "sprint_speed": 27.35,
+      "predicted_attempt_probability": 0.7131270126330691
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "sprint_speed": 28.5,
+      "predicted_attempt_probability": 0.7653048845947855
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "sprint_speed": 30.0,
+      "predicted_attempt_probability": 0.8249736988779683
+    },
+    {
+      "model_name": "single_2b_to_home",
+      "sprint_speed": 30.5,
+      "predicted_attempt_probability": 0.8424549499997203
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "sprint_speed": 24.5,
+      "predicted_attempt_probability": 0.22409271356735788
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "sprint_speed": 26.0,
+      "predicted_attempt_probability": 0.32344263576779675
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "sprint_speed": 27.35,
+      "predicted_attempt_probability": 0.42831100609603534
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "sprint_speed": 28.5,
+      "predicted_attempt_probability": 0.5233137664563606
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "sprint_speed": 30.0,
+      "predicted_attempt_probability": 0.6444561083774656
+    },
+    {
+      "model_name": "double_1b_to_home",
+      "sprint_speed": 30.5,
+      "predicted_attempt_probability": 0.6820660638883155
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "sprint_speed": 24.5,
+      "predicted_attempt_probability": 0.03640010372844649
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "sprint_speed": 26.0,
+      "predicted_attempt_probability": 0.044227666486806594
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "sprint_speed": 27.35,
+      "predicted_attempt_probability": 0.0526157331854883
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "sprint_speed": 28.5,
+      "predicted_attempt_probability": 0.06091743363328615
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "sprint_speed": 30.0,
+      "predicted_attempt_probability": 0.07357460127913547
+    },
+    {
+      "model_name": "flyout_1b_to_2b",
+      "sprint_speed": 30.5,
+      "predicted_attempt_probability": 0.07830192963079778
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "sprint_speed": 24.5,
+      "predicted_attempt_probability": 0.2876585151065423
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "sprint_speed": 26.0,
+      "predicted_attempt_probability": 0.3234945472073065
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "sprint_speed": 27.35,
+      "predicted_attempt_probability": 0.3569853118734839
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "sprint_speed": 28.5,
+      "predicted_attempt_probability": 0.38621604609363147
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "sprint_speed": 30.0,
+      "predicted_attempt_probability": 0.42497992709929416
+    },
+    {
+      "model_name": "flyout_2b_to_3b",
+      "sprint_speed": 30.5,
+      "predicted_attempt_probability": 0.43799331494430815
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "sprint_speed": 24.5,
+      "predicted_attempt_probability": 0.7656960376067511
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "sprint_speed": 26.0,
+      "predicted_attempt_probability": 0.7899783216626766
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "sprint_speed": 27.35,
+      "predicted_attempt_probability": 0.8111473810371673
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "sprint_speed": 28.5,
+      "predicted_attempt_probability": 0.8284294089075177
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "sprint_speed": 30.0,
+      "predicted_attempt_probability": 0.8496686526040453
+    },
+    {
+      "model_name": "flyout_3b_to_home",
+      "sprint_speed": 30.5,
+      "predicted_attempt_probability": 0.8563807289272244
+    }
+  ],
+  "runner_movement_source": "MLB StatsAPI play.runners[].movement joined to Statcast BIP classification/detail",
+  "speed_context_invalid_records": 0,
+  "speed_context_repaired_records": 0
+}
