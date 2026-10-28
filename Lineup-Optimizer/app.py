@@ -249,18 +249,6 @@ def _render_custom_hitter_form(pool: pd.DataFrame, position_eligibility: pd.Data
             with detail_col4:
                 popup_rate = st.number_input("Popup%", min_value=0.0, max_value=1.0, value=float(defaults["popup_rate"]), step=0.01, key=f"custom_popup_{version}")
 
-        st.markdown("**Position eligibility games**")
-        pos_col1, pos_col2, pos_col3 = st.columns(3)
-        with pos_col1:
-            c_games = st.number_input("C", min_value=0, value=int(defaults["c_games"]), key=f"custom_c_games_{version}")
-            first_base_games = st.number_input("1B", min_value=0, value=int(defaults["first_base_games"]), key=f"custom_1b_games_{version}")
-        with pos_col2:
-            second_base_games = st.number_input("2B", min_value=0, value=int(defaults["second_base_games"]), key=f"custom_2b_games_{version}")
-            third_base_games = st.number_input("3B", min_value=0, value=int(defaults["third_base_games"]), key=f"custom_3b_games_{version}")
-        with pos_col3:
-            shortstop_games = st.number_input("SS", min_value=0, value=int(defaults["shortstop_games"]), key=f"custom_ss_games_{version}")
-            outfield_games = st.number_input("OF", min_value=0, value=int(defaults["outfield_games"]), key=f"custom_of_games_{version}")
-
         save_col, add_col = st.columns(2)
         with save_col:
             save_submitted = st.form_submit_button("Save custom hitter", use_container_width=True)
@@ -291,12 +279,12 @@ def _render_custom_hitter_form(pool: pd.DataFrame, position_eligibility: pd.Data
             fb_rate=fb_rate,
             ld_rate=ld_rate,
             popup_rate=popup_rate,
-            c_games=c_games,
-            first_base_games=first_base_games,
-            second_base_games=second_base_games,
-            third_base_games=third_base_games,
-            shortstop_games=shortstop_games,
-            outfield_games=outfield_games,
+            c_games=defaults["c_games"],
+            first_base_games=defaults["first_base_games"],
+            second_base_games=defaults["second_base_games"],
+            third_base_games=defaults["third_base_games"],
+            shortstop_games=defaults["shortstop_games"],
+            outfield_games=defaults["outfield_games"],
             source_woba=defaults.get("source_woba", 0.0),
             source_wrc_plus=defaults.get("source_wrc_plus", 100.0),
             source_pa=defaults.get("source_pa", 0),
