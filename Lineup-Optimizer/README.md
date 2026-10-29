@@ -6,6 +6,8 @@ An interactive Streamlit app and Monte Carlo research project for estimating MLB
 
 [Open Lineup Optimizer](https://jacobchin-lineup-optimizer.streamlit.app/)
 
+> **First visit:** Streamlit Community Cloud may put this app to sleep after inactivity. If prompted, select **Yes, get this app back up!** and allow around one minute for it to wake.
+
 ## Features
 
 - Select any nine 2025 hitters, including duplicate players.

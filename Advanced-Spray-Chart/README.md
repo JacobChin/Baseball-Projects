@@ -2,6 +2,12 @@
 
 An interactive Streamlit app for exploring hitter spray charts and advanced batted-ball leaderboards across the 2024, 2025, and 2026 seasons.
 
+## Live App
+
+[Open Advanced Spray Chart](https://jacobchin-advanced-spray-chart.streamlit.app/)
+
+> **First visit:** Streamlit Community Cloud may put this app to sleep after inactivity. If prompted, select **Yes, get this app back up!** and allow around one minute for it to wake.
+
 ## Features
 
 - Filter by season, hitter, count, pitch group/type, zone, pitcher handedness, result, and normalized spray angle.
