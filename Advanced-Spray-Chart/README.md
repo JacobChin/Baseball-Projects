@@ -34,6 +34,7 @@ The repository includes the compact app-ready dataset at `data/statcast_bbe_2024
 To rebuild the dataset through a particular date:
 
 ```powershell
+pip install -r scripts/requirements.txt
 python scripts/prepare_data.py --end-date 2026-10-16
 ```
 

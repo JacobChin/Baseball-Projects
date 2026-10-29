@@ -3,4 +3,3 @@ pandas==2.2.3
 numpy>=1.26
 plotly==5.24.1
 pyarrow==19.0.0
-pybaseball==2.2.7
