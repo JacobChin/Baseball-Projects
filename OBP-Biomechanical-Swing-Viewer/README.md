@@ -21,6 +21,22 @@ The analysis uses Driveline's OBP baseball hitting dataset. The swings were coll
 
 Raw OBP data is not included in this repository. To regenerate the full analysis, download the OBP data locally and place it in the expected structure described below.
 
+## Streamlit App
+
+The Streamlit app provides the easiest way to explore the included swings: select a swing,
+review its processed measurements, and use the complete interactive viewer without opening HTML
+files individually.
+
+Run it locally with:
+
+```powershell
+streamlit run app.py
+```
+
+For Streamlit Community Cloud, use `OBP-Biomechanical-Swing-Viewer/app.py` as the main file path
+and Python 3.12. The app automatically discovers viewer files in `Viewer-Examples/` and
+`outputs/qc_viewers/`, including optional `.html.gz` files.
+
 ## Included Example Viewer
 
 GitHub shows .html files as source code. Use these rendered RawGitHack links to open the actual interactive viewer pages:

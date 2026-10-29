@@ -1,6 +1,7 @@
-﻿numpy
+numpy
 pandas
 matplotlib
 scipy
 statsmodels
 pytest
+streamlit>=1.64,<2
