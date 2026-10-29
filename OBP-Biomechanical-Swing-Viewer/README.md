@@ -23,6 +23,10 @@ Raw OBP data is not included in this repository. To regenerate the full analysis
 
 ## Streamlit App
 
+[Open the live OBP Biomechanical Swing Viewer app](https://share.streamlit.io/jacobchin/baseball-projects/main/OBP-Biomechanical-Swing-Viewer/app.py)
+
+The free Streamlit app may be asleep after a period of inactivity. Anyone can wake it from the app page; allow about a minute for it to restart.
+
 The Streamlit app provides a filter-first way to explore all 677 model-ready swings without
 opening HTML files individually. Users can combine hitter side and playing level with numeric
 conditions for:
@@ -53,21 +57,6 @@ python scripts/build_all_viewer_payloads.py --overwrite
 
 The generator loads the signal archives once, supports resumable output, and writes a manifest
 that can be checked against the processed swing table.
-
-## Included Example Viewer
-
-GitHub shows .html files as source code. Use these rendered RawGitHack links to open the actual interactive viewer pages:
-
-- [Rendered viewer index](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/index.html)
-- [Rendered example 180_1](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/180_1.html)
-- [Rendered example 398_4](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/398_4.html)
-- [Rendered example 282_1](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/282_1.html)
-- [Rendered example 24_3](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/24_3.html)
-- [Rendered example 181_8](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/181_8.html)
-- [Rendered viewer definitions](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/Viewer-Examples/definitions.html)
-- [Rendered project metric definitions](https://raw.githack.com/JacobChin/Baseball-Projects/main/OBP-Biomechanical-Swing-Viewer/docs/viewer_definitions.html)
-
-The source HTML files live in [Viewer-Examples](Viewer-Examples), but clicking those files directly on GitHub will show the code instead of the rendered viewer.
 
 ## Viewer Features
 
