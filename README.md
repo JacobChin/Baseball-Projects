@@ -7,6 +7,9 @@ This repository contains baseball analytics projects focused mainly on aiding in
 This project builds on Driveline Baseball's OpenBiomechanics hitting data to create a frame-by-frame swing viewer and dataset-level analysis of attack angle, attack direction, bat speed, force timing, segment onsets, contact depth, swing length, and swing path tilt. The viewer highlights the portion of the barrel path where the sweet spot is moving through a selected attack-angle window, validates marker-derived attack angle and bat speed against OBP contact fields, and provides a cleaner way to QC and compare full swing movement patterns.
 
 ## Advanced Spray Chart:
+
+[Open the live Advanced Spray Chart app](https://jacobchin-advanced-spray-chart.streamlit.app/)
+
 This project is an interactive Streamlit spray chart and leaderboard app built from Statcast batted-ball and bat-tracking data covering 2024 through 2026. It can be launched directly without running notebook setup cells and includes a compact app-ready dataset in the project folder. Users can filter by season, hitter, count, pitch group or pitch type, strike zone location, pitcher handedness, batted-ball result, normalized spray angle, and minimum batted balls. Zone filters mirror automatically by hitter handedness.
 
 The app includes xBA, xwOBA, EV50, median launch angle, squared-up rate, bat speed, swing length, attack angle, swing path tilt, and contact point out in front. Squared-up contact can be defined at a custom threshold, with optional over/under point filtering. The leaderboard also supports multi-metric composite percentiles, searchable player rows, and downloadable interactive charts and CSV tables.
