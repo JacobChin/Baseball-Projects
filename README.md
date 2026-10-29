@@ -4,6 +4,10 @@
 This repository contains baseball analytics projects focused mainly on aiding in player development on the hitting side. I want to really dive into the science of hitting using data and help discover new techniques and be on the cutting edge of the race to keep up with the improved pitching MLB has to offer.
 
 ## OBP Biomechanical Swing Viewer:
+
+[Open the live OBP Biomechanical Swing Viewer app](https://share.streamlit.io/jacobchin/baseball-projects/main/OBP-Biomechanical-Swing-Viewer/app.py)
+
+The free Streamlit app may be asleep after a period of inactivity. Anyone can wake it from the app page; allow about a minute for it to restart.
 This project builds on Driveline Baseball's OpenBiomechanics hitting data to create a frame-by-frame swing viewer and dataset-level analysis of attack angle, attack direction, bat speed, force timing, segment onsets, contact depth, swing length, and swing path tilt. The viewer highlights the portion of the barrel path where the sweet spot is moving through a selected attack-angle window, validates marker-derived attack angle and bat speed against OBP contact fields, and provides a cleaner way to QC and compare full swing movement patterns.
 
 ## Advanced Spray Chart:
