@@ -23,19 +23,36 @@ Raw OBP data is not included in this repository. To regenerate the full analysis
 
 ## Streamlit App
 
-The Streamlit app provides the easiest way to explore the included swings: select a swing,
-review its processed measurements, and use the complete interactive viewer without opening HTML
-files individually.
+The Streamlit app provides a filter-first way to explore all 677 model-ready swings without
+opening HTML files individually. Users can combine hitter side and playing level with numeric
+conditions for:
 
-Run it locally with:
+- contact bat speed
+- computed attack angle
+- swing length from barrel-path inflection
+- ideal attack-angle zone time
+
+The matching swing IDs become the only options in the final swing selector. Selecting a swing
+loads its complete multi-angle biomechanical viewer from a compressed payload.
+
+Run the app locally with:
 
 ```powershell
 streamlit run app.py
 ```
 
 For Streamlit Community Cloud, use `OBP-Biomechanical-Swing-Viewer/app.py` as the main file path
-and Python 3.12. The app automatically discovers viewer files in `Viewer-Examples/` and
-`outputs/qc_viewers/`, including optional `.html.gz` files.
+and Python 3.12.
+
+The committed `Viewer-Payloads/` directory contains all 677 compressed swing payloads. To rebuild
+them from the local OBP source archives, run:
+
+```powershell
+python scripts/build_all_viewer_payloads.py --overwrite
+```
+
+The generator loads the signal archives once, supports resumable output, and writes a manifest
+that can be checked against the processed swing table.
 
 ## Included Example Viewer
 
@@ -158,11 +175,13 @@ Selected figures are included in [Figures](Figures). The files in this folder we
 ```text
 OBP-Biomechanical-Swing-Viewer/
   README.md
+  app.py
   requirements.txt
   scripts/
     run_obp_swing_time.py
     analyze_attack_angle_zone.py
     create_swing_qc_viewer.py
+    build_all_viewer_payloads.py
     analyze_initiation_relationships.py
   src/
     obp_swing_time/
@@ -177,6 +196,10 @@ OBP-Biomechanical-Swing-Viewer/
     force/*.png
     onsets_velocity/*.png
     diagnostics/*.png
+  Viewer-Payloads/
+    payload_manifest.csv
+    24_3.json.gz
+    ...
   Viewer-Examples/
     index.html
     definitions.html
