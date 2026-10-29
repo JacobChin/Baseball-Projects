@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-import streamlit.components.v1 as components
 
 
 ROOT = Path(__file__).resolve().parent
@@ -13,15 +12,6 @@ METRICS_PATH = ROOT / "outputs" / "attack_angle_zone_metrics.csv"
 MANIFEST_PATH = ROOT / "outputs" / "swing_manifest.csv"
 VIEWER_DIRS = (ROOT / "outputs" / "qc_viewers", ROOT / "Viewer-Examples")
 IGNORED_VIEWERS = {"index", "definitions"}
-
-DISPLAY_METRICS = (
-    ("Bat speed", "attack_angle_contact_bat_speed_mph", "{:.1f} mph"),
-    ("Attack angle", "attack_angle_contact_x", "{:.1f} deg"),
-    ("Ideal-zone time", "attack_zone_time_ms", "{:.1f} ms"),
-    ("Swing length", "swing_length_from_barrel_inflection_in", "{:.1f} in"),
-    ("Contact out front", "contact_barrel_x_relative_com_in", "{:.1f} in"),
-    ("Swing path tilt", "swing_path_tilt_contact_deg", "{:.1f} deg"),
-)
 
 
 st.set_page_config(
@@ -33,41 +23,9 @@ st.markdown(
     """
     <style>
     .block-container {max-width: 1600px; padding-top: 1.25rem; padding-bottom: 2rem;}
-    [data-testid="stMetric"] {
-        border: 1px solid #30363d;
-        border-radius: 6px;
-        padding: 0.7rem 0.85rem;
-        min-height: 92px;
-    }
-    [data-testid="stMetricLabel"] {font-size: 0.82rem;}
-    [data-testid="stMetricValue"] {font-size: 1.35rem;}
     [data-testid="stSidebar"] {min-width: 300px; max-width: 300px;}
-    .viewer-note {color: #8b949e; font-size: 0.9rem; margin-top: -0.4rem;}
     @media (max-width: 768px) {
         h1 {font-size: 2.25rem !important;}
-        div[data-testid="stHorizontalBlock"]:has([data-testid="stSelectbox"]) {
-            display: grid;
-            grid-template-columns: 44px minmax(0, 1fr) 44px;
-            gap: 0.5rem;
-        }
-        div[data-testid="stHorizontalBlock"]:has([data-testid="stSelectbox"])
-            > div[data-testid="stColumn"] {
-            width: auto !important;
-            min-width: 0 !important;
-            flex: none !important;
-        }
-        div[data-testid="stHorizontalBlock"]:has([data-testid="stMetric"]) {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.5rem;
-        }
-        div[data-testid="stHorizontalBlock"]:has([data-testid="stMetric"])
-            > div[data-testid="stColumn"] {
-            width: auto !important;
-            min-width: 0 !important;
-            flex: none !important;
-        }
-        [data-testid="stMetric"] {min-height: 84px; padding: 0.6rem 0.7rem;}
     }
     </style>
     """,
@@ -171,23 +129,10 @@ def read_viewer(path_string: str, modified_ns: int) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def format_metric(value: object, template: str) -> str:
-    numeric = pd.to_numeric(pd.Series([value]), errors="coerce").iloc[0]
-    if pd.isna(numeric):
-        return "Not available"
-    return template.format(float(numeric))
-
-
 def option_label(row: pd.Series) -> str:
     side = str(row.get("hitter_side", "")).upper()
     level = str(row.get("highest_playing_level", "Unknown"))
     return f"{row['session_swing']}  |  {side}HH  |  {level}"
-
-
-def change_swing(swing_ids: list[str], offset: int) -> None:
-    current = st.session_state.swing_selector
-    index = swing_ids.index(current)
-    st.session_state.swing_selector = swing_ids[(index + offset) % len(swing_ids)]
 
 
 viewers = discover_viewers()
@@ -202,8 +147,8 @@ if catalog.empty:
 
 st.title("OBP Biomechanical Swing Viewer")
 st.write(
-    "Choose a swing to inspect its biomechanical summary, then use the interactive "
-    "viewer to scrub through the motion from multiple angles and compare timing, force, "
+    "Choose a swing in the sidebar, then use the interactive viewer to scrub through "
+    "the motion from multiple angles and compare timing, force, "
     "segment velocity, bat path, and contact measurements."
 )
 
@@ -250,57 +195,19 @@ query_swing = st.query_params.get("swing")
 if "swing_selector" not in st.session_state or st.session_state.swing_selector not in swing_ids:
     st.session_state.swing_selector = query_swing if query_swing in swing_ids else swing_ids[0]
 
-control_left, control_middle, control_right = st.columns([1, 8, 1])
-with control_left:
-    st.button(
-        "←",
-        help="Previous swing",
-        width="stretch",
-        on_click=change_swing,
-        args=(swing_ids, -1),
-    )
-with control_middle:
-    label_lookup = {
-        row["session_swing"]: option_label(row) for _, row in filtered.iterrows()
-    }
+label_lookup = {
+    row["session_swing"]: option_label(row) for _, row in filtered.iterrows()
+}
+with st.sidebar:
     selected_id = st.selectbox(
         "Swing",
         swing_ids,
         key="swing_selector",
         format_func=lambda value: label_lookup[value],
-        label_visibility="collapsed",
-    )
-with control_right:
-    st.button(
-        "→",
-        help="Next swing",
-        width="stretch",
-        on_click=change_swing,
-        args=(swing_ids, 1),
     )
 
 st.query_params["swing"] = selected_id
 selected = catalog.loc[catalog["session_swing"].eq(selected_id)].iloc[0]
-
-metric_columns = st.columns(len(DISPLAY_METRICS))
-for column, (label, field, template) in zip(metric_columns, DISPLAY_METRICS):
-    column.metric(label, format_metric(selected.get(field), template))
-
-metadata = []
-if pd.notna(selected.get("user")):
-    metadata.append(f"Athlete {int(selected['user'])}")
-if pd.notna(selected.get("hitter_side")):
-    metadata.append(f"{selected['hitter_side']}HH")
-if pd.notna(selected.get("highest_playing_level")):
-    metadata.append(str(selected["highest_playing_level"]))
-if pd.notna(selected.get("attack_angle_qc")):
-    metadata.append(f"Attack-angle QC: {selected['attack_angle_qc']}")
-st.markdown(
-    f"<p class='viewer-note'>Swing {selected_id} &nbsp;|&nbsp; "
-    + " &nbsp;|&nbsp; ".join(metadata)
-    + "</p>",
-    unsafe_allow_html=True,
-)
 
 viewer_path = viewers[selected_id]
 viewer_html = read_viewer(str(viewer_path), viewer_path.stat().st_mtime_ns)
