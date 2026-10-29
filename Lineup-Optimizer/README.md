@@ -61,6 +61,7 @@ Contact-oriented hitters gained substantial value when runners were already in s
 - [Current 2025 optimal-lineup report](results/current_optimal_lineups_2025.md)
 - [2025 RISP-start clone leaderboard](results/risp_one_run_report.md)
 - [All-time RISP-start clone leaderboard](results/all_time_risp_top20.md)
+- [RISP-start clone leaderboards by decade](results/decade_risp_top20.md)
 
 ## Project Structure
 
@@ -68,7 +69,7 @@ Contact-oriented hitters gained substantial value when runners were already in s
 - `baseball_lineup_optimizer/` - Simulation, transition, optimization, and data-loading code.
 - `data/processed/` - Compact app-ready hitter profiles and fitted runtime artifacts.
 - `docs/` - Model specification and assumptions.
-- `results/` - Selected high-precision leaderboards and reports.
+- `results/` - Readable Markdown leaderboards and reports; supporting CSV files are kept in `results/data/`.
 - `tests/` - Core simulator and engine tests.
 - `requirements.txt` - Hosted-app dependencies.
 

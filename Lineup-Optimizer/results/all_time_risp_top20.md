@@ -88,8 +88,8 @@ The point-estimate lead over `Ted Williams (1941)` is `1.58` percentage points; 
 
 ## Files
 
-- `all_time_risp_screen.csv`: complete all-season screening results.
-- `all_time_risp_finalists.csv`: 20,000-trial finalist results.
-- `all_time_risp_high_precision.csv`: 100,000-trial high-precision results.
-- `all_time_risp_top20.csv`: final top 20.
-- `risp_state_weights.csv`: empirical 2025 starting-state weights.
+- `data/all_time_risp_screen.csv`: complete all-season screening results.
+- `data/all_time_risp_finalists.csv`: 20,000-trial finalist results.
+- `data/all_time_risp_high_precision.csv`: 100,000-trial high-precision results.
+- `data/all_time_risp_top20.csv`: final top 20.
+- `data/risp_state_weights.csv`: empirical 2025 starting-state weights.

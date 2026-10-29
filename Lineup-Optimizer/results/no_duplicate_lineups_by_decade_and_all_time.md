@@ -1,4 +1,4 @@
-﻿# No-Duplicate Lineups by Decade and All Time
+# No-Duplicate Lineups by Decade and All Time
 
 ## Results
 
@@ -59,5 +59,5 @@ This compares the best order with the best finalist from the next distinct nine-
 
 - [Full decade clone and no-duplicate report](common_input_decade_lineups.md)
 - [All-time no-duplicate report](all_time_best_no_duplicate_lineup.md)
-- [All-time finalist CSV](all_time_no_duplicate_finalists.csv)
-- [Combined summary CSV](no_duplicate_lineup_summary.csv)
+- [All-time finalist CSV](data/all_time_no_duplicate_finalists.csv)
+- [Combined summary CSV](data/no_duplicate_lineup_summary.csv)

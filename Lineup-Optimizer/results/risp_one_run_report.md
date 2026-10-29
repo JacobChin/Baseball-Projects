@@ -145,6 +145,6 @@ At 10,000 trials per hitter, a simple probability near 0.50 has a Monte Carlo st
 
 ## Files
 
-- `risp_one_run_clone_leaderboard.csv`: aggregate player leaderboard and comparisons.
-- `risp_state_results.csv`: player-by-starting-state diagnostics.
-- `risp_state_weights.csv`: empirical 2025 state counts and weights.
+- `data/risp_one_run_clone_leaderboard.csv`: aggregate player leaderboard and comparisons.
+- `data/risp_state_results.csv`: player-by-starting-state diagnostics.
+- `data/risp_state_weights.csv`: empirical 2025 state counts and weights.
