@@ -58,6 +58,7 @@ Contact-oriented hitters gained substantial value when runners were already in s
 
 - [No-duplicate lineups by decade and all time](results/no_duplicate_lineups_by_decade_and_all_time.md)
 - [All-time clone leaderboard](results/all_time_top20_clone_runs9.md)
+- [Historical leaderboards with era offensive environments](results/era_environment_historical_leaderboards.md)
 - [Current 2025 optimal-lineup report](results/current_optimal_lineups_2025.md)
 - [2025 RISP-start clone leaderboard](results/risp_one_run_report.md)
 - [All-time RISP-start clone leaderboard](results/all_time_risp_top20.md)
